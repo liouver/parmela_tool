@@ -1,3 +1,7 @@
+'''parmela tool, used to optimize the beamline.
+scan the value to meak all the electron pass the beamline
+Created by W.Liu @ Dec, 2017
+'''
 import os
 
 parmela = 'wine ~/.wine/drive_c/LANL/parmela.exe '
@@ -15,6 +19,7 @@ def getvar(filename):
     templeft_range = []
     right_range = []
     tempright_range = []
+    pos = []
     for line in lines:
         line = line.strip()
         var = line.split()
@@ -35,6 +40,8 @@ def getvar(filename):
                     mark.append(var[3])
                 if(ln >= 6 and var[5] in tempmark):
                     mark.append(var[5])
+                if(ln >= 6 and var[-2] == 'element'):
+                    pos.append(int(var[-1]))
     ln1 = len(mark)
     ln2 = len(tempmark)
     for i in range(ln1):
@@ -43,7 +50,7 @@ def getvar(filename):
                 step.append(tempstep[j])
                 left_range.append(templeft_range[j])
                 right_range.append(tempright_range[j])
-    return mark, step, left_range, right_range
+    return mark, step, left_range, right_range, pos
 
 
 def rewriteFile(filename, mark, value):
@@ -72,17 +79,17 @@ def rewriteFile(filename, mark, value):
                         new_line = ' '.join(new_line) + '\n'
                         lines[k + i + 1] = new_line
                 if(ln >= 4 and subs[3] == ('-' + mark)):
-                        new_line = lines[k + i + 1]
-                        new_line = new_line.split()
-                        new_line[int(subs[2])] = ('-' + value)
-                        new_line = ' '.join(new_line) + '\n'
-                        lines[k + i + 1] = new_line
+                    new_line = lines[k + i + 1]
+                    new_line = new_line.split()
+                    new_line[int(subs[2])] = ('-' + value)
+                    new_line = ' '.join(new_line) + '\n'
+                    lines[k + i + 1] = new_line
                 if(ln >= 6 and subs[5] == ('-' + mark)):
-                        new_line = lines[k + i + 1]
-                        new_line = new_line.split()
-                        new_line[int(subs[4])] = ('-' + value)
-                        new_line = ' '.join(new_line) + '\n'
-                        lines[k + i + 1] = new_line
+                    new_line = lines[k + i + 1]
+                    new_line = new_line.split()
+                    new_line[int(subs[4])] = ('-' + value)
+                    new_line = ' '.join(new_line) + '\n'
+                    lines[k + i + 1] = new_line
         k += 1
     file = open(filename, 'w')
     file.writelines(lines)
@@ -118,13 +125,14 @@ def main():
     inputfilename = 'scan.acc'
     outfilename = 'OUTPAR.TXT'
     foldername = 'scan_result'
-    pos = [151, 155]
-    mark, step, left_range, right_range = getvar(inputfilename)
+    # pos = [151, 155]
+    mark, step, left_range, right_range, pos = getvar(inputfilename)
     if mark == []:
         print('No change of the inputfile, please check the parameter')
     else:
         ln_mark = len(mark)
         for i in range(ln_mark):
+            print(mark[i], step[i], left_range[i], right_range[i])
             N = (float(right_range[i]) - float(left_range[i])) / float(step[i])
             N = int(N)
             position = pos[i]
@@ -132,17 +140,17 @@ def main():
                 mk = mark[i]
                 value = str(float(left_range[i]) + j * float(step[i]))
                 rewriteFile(inputfilename, mk, value)
-                os.system(parmela + inputfilename)
+                # os.system(parmela + inputfilename)
                 IsOk, goodpos = analyzeResult(outfilename, position)
                 name = '_' + str(mk) + '_' + str(value)
-                os.system('mv EMITTANCE.TBL EMITTANCE_' + str(name) + '.TBL')
-                os.system('mv OUTPAR.TXT OUTPAR_' + str(name) + '.TXT')
-                print(mk, value, goodpos)
+                os.system('mv EMITTANCE.TBL EMITTANCE' + str(name) + '.TBL')
+                # os.system('mv OUTPAR.TXT OUTPAR' + str(name) + '.TXT')
+                print(mk, value, 'position=', goodpos, 'need=', position)
                 if IsOk == 1:
                     break
 
         os.system('mv EMITTANCE*.TBL ' + foldername)
-        os.system('mv OUTPAR*.TXT ' + foldername)
+        # os.system('mv OUTPAR*.TXT ' + foldername)
         os.system('cp ' + inputfilename + ' ' + foldername)
         print('done')
 
