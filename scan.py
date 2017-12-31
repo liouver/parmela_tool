@@ -37,14 +37,12 @@ def getvar(filename):
                     mark.append(var[5])
     ln1 = len(mark)
     ln2 = len(tempmark)
-    print(mark)
     for i in range(ln1):
         for j in range(ln2):
             if tempmark[j] == mark[i]:
                 step.append(tempstep[j])
                 left_range.append(templeft_range[j])
                 right_range.append(tempright_range[j])
-                print(mark[i], step[i], left_range[i], right_range[i])
     return mark, step, left_range, right_range
 
 
@@ -120,26 +118,28 @@ def main():
     inputfilename = 'scan.acc'
     outfilename = 'OUTPAR.TXT'
     foldername = 'scan_result'
-    position = 154
+    pos = [151, 155]
     mark, step, left_range, right_range = getvar(inputfilename)
     if mark == []:
         print('No change of the inputfile, please check the parameter')
     else:
-        i = 0
-        N = (float(right_range[i]) - float(left_range[i])) / float(step[i])
-        N = int(N)
-        for j in range(N + 1):
-            mk = mark[i]
-            value = str(float(left_range[i]) + j * float(step[i]))
-            rewriteFile(inputfilename, mk, value)
-            os.system(parmela + inputfilename)
-            IsOk, goodpos = analyzeResult(outfilename, position)
-            name = '_' + str(mk) + '_' + str(value)
-            os.system('mv EMITTANCE.TBL EMITTANCE_' + str(name) + '.TBL')
-            os.system('mv OUTPAR.TXT OUTPAR_' + str(name) + '.TXT')
-            print(value, goodpos)
-            if IsOk == 1:
-                break
+        ln_mark = len(mark)
+        for i in range(ln_mark):
+            N = (float(right_range[i]) - float(left_range[i])) / float(step[i])
+            N = int(N)
+            position = pos[i]
+            for j in range(N + 1):
+                mk = mark[i]
+                value = str(float(left_range[i]) + j * float(step[i]))
+                rewriteFile(inputfilename, mk, value)
+                os.system(parmela + inputfilename)
+                IsOk, goodpos = analyzeResult(outfilename, position)
+                name = '_' + str(mk) + '_' + str(value)
+                os.system('mv EMITTANCE.TBL EMITTANCE_' + str(name) + '.TBL')
+                os.system('mv OUTPAR.TXT OUTPAR_' + str(name) + '.TXT')
+                print(mk, value, goodpos)
+                if IsOk == 1:
+                    break
 
         os.system('mv EMITTANCE*.TBL ' + foldername)
         os.system('mv OUTPAR*.TXT ' + foldername)
