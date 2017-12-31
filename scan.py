@@ -132,17 +132,17 @@ def main():
             mk = mark[i]
             value = str(float(left_range[i]) + j * float(step[i]))
             rewriteFile(inputfilename, mk, value)
-            # os.system(parmela + inputfilename)
+            os.system(parmela + inputfilename)
             IsOk, goodpos = analyzeResult(outfilename, position)
             name = '_' + str(mk) + '_' + str(value)
             os.system('mv EMITTANCE.TBL EMITTANCE_' + str(name) + '.TBL')
-            # os.system('mv OUTPAR.TXT OUTPAR_' + str(name) + '.TXT')
+            os.system('mv OUTPAR.TXT OUTPAR_' + str(name) + '.TXT')
             print(value, goodpos)
             if IsOk == 1:
                 break
 
         os.system('mv EMITTANCE*.TBL ' + foldername)
-        # os.system('mv OUTPAR*.TXT ' + foldername)
+        os.system('mv OUTPAR*.TXT ' + foldername)
         os.system('cp ' + inputfilename + ' ' + foldername)
         print('done')
 
