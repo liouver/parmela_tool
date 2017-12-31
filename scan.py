@@ -120,7 +120,7 @@ def main():
     inputfilename = 'scan.acc'
     outfilename = 'OUTPAR.TXT'
     foldername = 'scan_result'
-    position = 138
+    position = 154
     mark, step, left_range, right_range = getvar(inputfilename)
     if mark == []:
         print('No change of the inputfile, please check the parameter')
