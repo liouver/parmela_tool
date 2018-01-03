@@ -20,6 +20,7 @@ def getvar(filename):
     right_range = []
     tempright_range = []
     pos = []
+    temppos = []
     for line in lines:
         line = line.strip()
         var = line.split()
@@ -38,10 +39,12 @@ def getvar(filename):
             if (var[0] == '!@subs'):
                 if(ln >= 4 and var[3] in tempmark):
                     mark.append(var[3])
+                    if(ln >= 6 and var[-2] == 'element'):
+                        temppos.append(int(var[-1]))
                 if(ln >= 6 and var[5] in tempmark):
                     mark.append(var[5])
-                if(ln >= 6 and var[-2] == 'element'):
-                    pos.append(int(var[-1]))
+                    if(ln >= 8 and var[-2] == 'element'):
+                        temppos.append(int(var[-1]))
     ln1 = len(mark)
     ln2 = len(tempmark)
     for i in range(ln1):
@@ -50,6 +53,7 @@ def getvar(filename):
                 step.append(tempstep[j])
                 left_range.append(templeft_range[j])
                 right_range.append(tempright_range[j])
+                pos.append(temppos[j])
     return mark, step, left_range, right_range, pos
 
 
@@ -125,7 +129,6 @@ def main():
     inputfilename = 'scan.acc'
     outfilename = 'OUTPAR.TXT'
     foldername = 'scan_result'
-    # pos = [151, 155]
     mark, step, left_range, right_range, pos = getvar(inputfilename)
     if mark == []:
         print('No change of the inputfile, please check the parameter')
