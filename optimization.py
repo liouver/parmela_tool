@@ -145,6 +145,7 @@ def judge_result(filename):
                 else:
                     IsOk = 0
                     break
+    print(goodpos)
     return IsOk, goodpos
 
 

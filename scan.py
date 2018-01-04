@@ -20,7 +20,6 @@ def getvar(filename):
     right_range = []
     tempright_range = []
     pos = []
-    temppos = []
     for line in lines:
         line = line.strip()
         var = line.split()
@@ -40,11 +39,11 @@ def getvar(filename):
                 if(ln >= 4 and var[3] in tempmark):
                     mark.append(var[3])
                     if(ln >= 6 and var[-2] == 'element'):
-                        temppos.append(int(var[-1]))
+                        pos.append(int(var[-1]))
                 if(ln >= 6 and var[5] in tempmark):
                     mark.append(var[5])
                     if(ln >= 8 and var[-2] == 'element'):
-                        temppos.append(int(var[-1]))
+                        pos.append(int(var[-1]))
     ln1 = len(mark)
     ln2 = len(tempmark)
     for i in range(ln1):
@@ -53,7 +52,6 @@ def getvar(filename):
                 step.append(tempstep[j])
                 left_range.append(templeft_range[j])
                 right_range.append(tempright_range[j])
-                pos.append(temppos[j])
     return mark, step, left_range, right_range, pos
 
 
@@ -85,13 +83,15 @@ def rewriteFile(filename, mark, value):
                 if(ln >= 4 and subs[3] == ('-' + mark)):
                     new_line = lines[k + i + 1]
                     new_line = new_line.split()
-                    new_line[int(subs[2])] = ('-' + value)
+                    value = str(-1 * float(value))
+                    new_line[int(subs[2])] = value
                     new_line = ' '.join(new_line) + '\n'
                     lines[k + i + 1] = new_line
                 if(ln >= 6 and subs[5] == ('-' + mark)):
                     new_line = lines[k + i + 1]
                     new_line = new_line.split()
-                    new_line[int(subs[4])] = ('-' + value)
+                    value = str(-1 * float(value))
+                    new_line[int(subs[4])] = value
                     new_line = ' '.join(new_line) + '\n'
                     lines[k + i + 1] = new_line
         k += 1
@@ -102,7 +102,7 @@ def rewriteFile(filename, mark, value):
 
 def analyzeResult(filename, pos):
     IsOk = 0
-    goodpos = 0
+    goodpos = '0'
     file = open(filename, 'rU')
     lines = file.readlines()
     file.close()
@@ -138,19 +138,26 @@ def main():
             print(mark[i], step[i], left_range[i], right_range[i])
             N = (float(right_range[i]) - float(left_range[i])) / float(step[i])
             N = int(N)
+            mk = mark[i]
             position = pos[i]
+            max_pos = 0
+            max_value = 0
             for j in range(N + 1):
-                mk = mark[i]
                 value = str(float(left_range[i]) + j * float(step[i]))
                 rewriteFile(inputfilename, mk, value)
                 # os.system(parmela + inputfilename)
                 IsOk, goodpos = analyzeResult(outfilename, position)
-                name = '_' + str(mk) + '_' + str(value)
+                name = '_' + mk + '_' + value
                 os.system('mv EMITTANCE.TBL EMITTANCE' + str(name) + '.TBL')
                 # os.system('mv OUTPAR.TXT OUTPAR' + str(name) + '.TXT')
                 print(mk, value, 'position=', goodpos, 'need=', position)
+                if int(goodpos) > max_pos:
+                    max_pos = int(goodpos)
+                    max_value = float(value)
                 if IsOk == 1:
                     break
+            if IsOk == 0:
+                rewriteFile(inputfilename, mk, str(max_value))
 
         os.system('mv EMITTANCE*.TBL ' + foldername)
         # os.system('mv OUTPAR*.TXT ' + foldername)
