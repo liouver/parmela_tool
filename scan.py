@@ -129,6 +129,7 @@ def main():
     inputfilename = 'scan.acc'
     outfilename = 'OUTPAR.TXT'
     foldername = 'scan_result'
+    wfilename = 'resultfile.txt'
     mark, step, left_range, right_range, pos = getvar(inputfilename)
     if mark == []:
         print('No change of the inputfile, please check the parameter')
@@ -142,15 +143,22 @@ def main():
             position = pos[i]
             max_pos = 0
             max_value = 0
+            IsOk = 0
             for j in range(N + 1):
                 value = str(float(left_range[i]) + j * float(step[i]))
                 rewriteFile(inputfilename, mk, value)
-                # os.system(parmela + inputfilename)
+                os.system(parmela + inputfilename)
                 IsOk, goodpos = analyzeResult(outfilename, position)
                 name = '_' + mk + '_' + value
                 os.system('mv EMITTANCE.TBL EMITTANCE' + str(name) + '.TBL')
-                # os.system('mv OUTPAR.TXT OUTPAR' + str(name) + '.TXT')
+                os.system('mv OUTPAR.TXT OUTPAR' + str(name) + '.TXT')
                 print(mk, value, 'position=', goodpos, 'need=', position)
+                file = open(wfilename, 'w+')
+                strings = 'mark:' + mk + ' value:' + str(value) +\
+                    ' poisition:' + str(goodpos) + 'need:' +\
+                    str(position) + '\n'
+                file.write(strings)
+                file.close()
                 if int(goodpos) > max_pos:
                     max_pos = int(goodpos)
                     max_value = float(value)
@@ -159,8 +167,9 @@ def main():
             if IsOk == 0:
                 rewriteFile(inputfilename, mk, str(max_value))
 
+        os.system('mv resultfile.txt ' + foldername)
         os.system('mv EMITTANCE*.TBL ' + foldername)
-        # os.system('mv OUTPAR*.TXT ' + foldername)
+        os.system('mv OUTPAR*.TXT ' + foldername)
         os.system('cp ' + inputfilename + ' ' + foldername)
         print('done')
 
