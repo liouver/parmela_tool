@@ -108,9 +108,9 @@ def analyzeResult(filename, pos):
     file.close()
     element = []
     number = []
-    for i in range(1, pos):
+    for i in range(1, pos + 1):
         element.append(str(i))
-    for i in range(10000, 20001):
+    for i in range(10, 20001):
         number.append(str(i))
     for line in lines:
         line = line.strip()
@@ -122,6 +122,7 @@ def analyzeResult(filename, pos):
                     goodpos = words[0]
                 else:
                     IsOk = 0
+                    break
     return IsOk, goodpos
 
 
@@ -153,12 +154,12 @@ def main():
                 os.system('mv EMITTANCE.TBL EMITTANCE' + str(name) + '.TBL')
                 os.system('mv OUTPAR.TXT OUTPAR' + str(name) + '.TXT')
                 print(mk, value, 'position=', goodpos, 'need=', position)
-                file = open(wfilename, 'w+')
+                wfile = open(wfilename, 'w+')
                 strings = 'mark:' + mk + ' value:' + str(value) +\
                     ' poisition:' + str(goodpos) + 'need:' +\
                     str(position) + '\n'
-                file.write(strings)
-                file.close()
+                wfile.write(strings)
+                wfile.close()
                 if int(goodpos) > max_pos:
                     max_pos = int(goodpos)
                     max_value = float(value)

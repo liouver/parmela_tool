@@ -1,0 +1,2141 @@
+! This eRHIC RR injector was referenced by SLAC, NCLS II
+!RUN  run#  prnflag  f0[MHz]  Z0[cm]  W0[MeV]  linactype  m1*c
+RUN  2000 1 2998.08  -0.0375367 0.4e-6  1      
+
+TITLE
+eRHIC 350kV gun beamline with bunching and booster
+
+! ***************
+! *** LATTICE ***
+! ***************
+
+! ****** drift 00, length = 0cm, start at cathode  ****** 
+drift  0  2.5  1 ! element 1, total length = 0 cm
+
+! ****** gun-e-field, electrostatic field in e-source 350kV ****** 
+poisson  -7.44 -2.4  0  0  0  0  1  1 
+GUN.T7
+
+!@var 1 0  5 -360 360 1st 112MHz cavity phase
+!@var 0 1  0.05 0.4 1.5 1st 112MHz cavity gain:chirp
+!@var 0 2  5.0 -360 360 1st 560MHz cavity phase:linear
+!@var 0 3  0.2 0.01 1.6 1st 560MHz cavity gain:linear
+!@var 0 4 0.1 0.8 1.2 laser size
+!@var 0 5 5 640 800 pulse length 
+
+!@var 0 6  20 -5000 5000 gun solenoid1
+!@var 0 7  20 -5000 5000 solenoid2
+!@var 0 8  20 -5000 5000 solenoid3
+!@var 0 9 1 1 18 drift before 5rd
+!@var 0 10 0.2 1 25 drift after 5 rd
+!@var 0 11  15 0 400 coil 1
+!@var 0 12  15 0 400 coil 2
+!@var 0 13  15 0 400 coil 3
+!@var 0 14  15 0 400 coil 4
+!@var 0 15  10 0 400 coil 5
+!@var 0 16  10 0 400 coil 6
+!@var 0 17  10 0 400 coil 7
+!@var 0 18  10 0 400 coil 8
+!@var 0 19  10 0 400 coil p1
+!@var 0 20  10 0 400 coil p2
+!@var 0 21  10 0 400 coil p3
+!@var 0 22  10 0 400 coil p4
+
+!@var 0 23  5.0 -360 360 1st 560MHz cavity phase:linear
+!@var 0 24  0.2 0.01 1.5 1st 560MHz cavity gain:linear
+!@var 0 25  10 0 400 coil 9
+!@var 0 26  10 0 400 coil 9
+!@var 0 27  10 0 400 coil 9
+!@var 0 28  10 0 400 coil 9
+!@var 0 29  10 0 400 coil 9
+!@var 0 30  10 0 400 coil 9
+
+!@var 0 31 2 20 120 buncher pahse
+
+!@var 0 32 20 -500 500 wien solenoid1
+!@var 0 33 20 -500 500 wien solenoid2
+!@var 1 34 20 -50 50 wien solenoid3
+
+
+
+CATHODE 0 1.26 1 0 0.1
+
+! ****** drift 01, length = 2.6 cm, until anode ****** 
+drift  0.5  3  1 ! element 2, total length = 0.5 cm
+drift  0.5  3  1 ! element 3, total length = 1 cm
+drift  0.5  3  1 ! element 4, total length = 1.5 cm
+drift  0.5  3  1 ! element 5, total length = 2 cm
+drift  0.5  3  1 ! element 6, total length = 2.5 cm
+drift  0.1  3  1 ! element 7, total length = 2.6 cm
+
+! ****** drift 02, length = 6 cm, until anode cone out ****** 
+drift  2  3  1 ! element 8, total length = 4.6 cm
+drift  2  3  1 ! element 9, total length = 6.6 cm
+drift  2  3  1 ! element 10, total length = 8.6 cm
+
+! ****** drift 03, length = 6 cm, until center solenoid 1 ****** 
+drift  2  3  1 ! element 9, total length = 10.6 cm
+drift  2  3  1 ! element 10, total length = 12.6 cm
+drift  2  3  1 ! element 11, total length = 14.6 cm
+
+!@subs 1 4 6
+Solenoid 10 5 1 3.8137525965e+02
+! ****** drift 04, length = 80 cm,for bending, sp=24.6--->ep=104.6 *****
+drift  5  3  1 ! element 12, total length = 29.6 cm
+drift  5  3  1 ! element 13, total length = 34.6 cm
+drift  5  3  1 ! element 14, total length = 39.6 cm
+drift  5  3  1 ! element 15, total length = 44.6 cm
+drift  5  3  1 ! element 16, total length = 49.6 cm
+drift  5  3  1 ! element 17, total length = 54.6 cm
+drift  5  3  1 ! element 18, total length = 59.6 cm
+drift  5  3  1 ! element 19, total length = 64.6 cm
+drift  5  3  1 ! element 20, total length = 69.6 cm
+drift  5  3  1 ! element 21, total length = 74.6 cm
+drift  5  3  1 ! element 22, total length = 79.6 cm
+drift  5  3  1 ! element 23, total length = 84.6 cm
+drift  5  3  1 ! element 24, total length = 89.6 cm
+drift  5  3  1 ! element 25, total length = 94.6 cm
+drift  5  3  1 ! element 26, total length = 99.6 cm
+drift  5  3  1 ! element 27, total length = 104.6 cm
+
+
+!@subs 1 4 7
+Solenoid 10 5 1 3.1287058273e+02
+
+!******bending  position, l = 80 cm; sp=114.6--->ep=194.6*******
+drift  5  3  1 ! element 28
+drift  5  3  1 ! element 29
+drift  5  3  1 ! element 30
+drift  5  3  1 ! element 31
+drift  5  3  1 ! element 32
+drift  5  3  1 ! element 33
+drift  5  3  1 ! element 34 
+drift  5  3  1 ! element 35 
+drift  5  3  1 ! element 36 
+drift  5  3  1 ! element 37 
+drift  5  3  1 ! element 38 
+drift  5  3  1 ! element 39 
+drift  5  3  1 ! element 40 
+drift  5  3  1 ! element 41 
+drift  5  3  1 ! element 42 
+drift  5  3  1 ! element 43, total length = 194.6 cm
+
+!xgoal envx 0 800
+!xgoal xmax 0 1000
+
+!@subs 1 4 8
+Solenoid 10 5 1 3.1287058273e+02
+
+!******Wien filter position, l = 80 cm; sp=204.6--->ep=284.6*******
+drift  5  3  1 ! element 44
+drift  5  3  1 ! element 45
+drift  5  3  1 ! element 46
+drift  5  3  1 ! element 47
+drift  5  3  1 ! element 48
+drift  5  3  1 ! element 49
+drift  5  3  1 ! element 50
+drift  5  3  1 ! element 51
+drift  5  3  1 ! element 52
+drift  5  3  1 ! element 53
+drift  5  3  1 ! element 54
+drift  5  3  1 ! element 55
+drift  5  3  1 ! element 56
+drift  5  3  1 ! element 57
+drift  5  3  1 ! element 58
+drift  5  3  1 ! element 59, total length = 284.6 cm
+
+!@subs 1 4 32
+Solenoid 5 5 1 3.1287058273e+02
+!@subs 1 4 -32
+Solenoid 5 5 1 -3.1287058273e+02
+
+!******Wien filter position, l = 80 cm; sp=294.6--->ep=374.6*******
+drift  5  3  1 ! element 60
+drift  5  3  1 ! element 61
+drift  5  3  1 ! element 62
+drift  5  3  1 ! element 63
+drift  5  3  1 ! element 64
+drift  5  3  1 ! element 65
+drift  5  3  1 ! element 66
+drift  5  3  1 ! element 67
+drift  5  3  1 ! element 68
+drift  5  3  1 ! element 69
+drift  5  3  1 ! element 70
+drift  5  3  1 ! element 71
+drift  5  3  1 ! element 72
+drift  5  3  1 ! element 73
+drift  5  3  1 ! element 74
+drift  5  3  1 ! element 75, total length = 374.6 cm
+
+!@subs 1 4 33
+Solenoid 5 5 1 3.1287058273e+02
+!@subs 1 4 -33
+Solenoid 5 5 1 -3.1287058273e+02
+
+!******Wien filter position, l = 80 cm; sp=384.6--->ep=464.6 *******
+drift  5  3  1 ! element 76
+drift  5  3  1 ! element 77
+drift  5  3  1 ! element 78
+drift  5  3  1 ! element 79
+drift  5  3  1 ! element 80
+drift  5  3  1 ! element 81
+drift  5  3  1 ! element 82
+drift  5  3  1 ! element 83
+drift  5  3  1 ! element 84
+drift  5  3  1 ! element 85
+drift  5  3  1 ! element 86
+drift  5  3  1 ! element 87
+drift  5  3  1 ! element 88
+drift  5  3  1 ! element 89
+drift  5  3  1 ! element 90
+drift  5  3  1 ! element 91, total length = 464.6 cm
+
+
+!@subs 1 4 34 element 94
+Solenoid 5 5 1 -50.0
+!@subs 1 4 -34
+Solenoid 5 5 1 50.0
+
+
+! ****** 112MHz pre-buncher QWR, 1-cell,E0=1MV, field length =40cm; sp=474.6---->ep=514.6 ****** 
+!@subs 1 4 0 5 1 element 100
+cell 40 4 1 -360.0 1.1651274437e+00 1 1 -1 112
+cfield 1
+BUNCHER112.T7
+
+!coil could be start from here 530cm***
+! ****** drift 07, length = 60.3cm, until center of view screen 2; sp=514.6--->ep=574.903 cm ****** 
+drift  2  2.0  1 ! element 92
+drift  2  2.0  1 ! element 93
+drift  2  2.0  1 ! element 94
+!xgoal xmax 0 500
+drift  2  2.0  1 ! element 95
+drift  2  2.0  1 ! element 96
+drift  2  2.0  1 ! element 97
+drift  2  2.0  1 ! element 98
+drift  2  2.0  1 ! element 99
+drift  2  2.0  1 ! element 100
+drift  2.6  2.0  1 ! element 101, 
+drift  2  2.0  1 ! element 102
+drift  2  2.0  1 ! element 103
+drift  2  2.0  1 ! element 104
+drift  2  2.0  1 ! element 105
+drift  2  2.0  1 ! element 106
+drift  2  2.0  1 ! element 107
+drift  2  2.0  1 ! element 108
+drift  5  2.0  1 ! element 109
+drift  5  2.0  1 ! element 110
+drift  5  2.0  1 ! element 112
+!@subs 1 1 9
+drift  5.7028555309e+00  2.0  1 !
+drift  5  2.0  1 ! element 113, total length = 574.9 cm
+
+
+!xgoal emit4d 0 200
+
+! ****** 560MHz pre-buncher PBS, 1-cell, 1MV, field length = 20cm; sp=574.903--->ep=594.903 ****** 
+!@subs 1 4 2 5 3
+cell 20 2 0 1.8695879359e+02 1.4516694312e+00 2 1 -1 560
+cfield 2
+BUNCHER560.T7
+
+
+! ****** drift 11, length = 40.113cm; sp=594.903--->ep=635.016 ****** 
+drift  5  2  1 ! element 114
+drift  5  2  1 ! element 115
+drift  5  2  1 ! element 116
+drift  5  2  1 ! element 117
+drift  5  2  1 ! element 118
+drift  5  2  1 ! element 119
+
+drift  6.1126700365e+00  1.5  1 ! element 120
+!xgoal xmax 0 2000
+drift 5 2 1 ! element 121, total length = 635.016 cm
+
+
+! ****** 560MHz pre-buncher PBS, 1-cell, 1MV, field length = 20cm sp=635.016---> ep=655.016 ****** 
+!@subs 1 4 23 5 24
+cell 20 2 0 1.5417719584e+02 1.3002538355e+00 2 1 -1 560
+cfield 2
+BUNCHER560.T7
+
+
+! ****** drift , length = 15.005 cm; sp=655.016--->ep=670.021********
+drift  5  2  1 ! element 121
+drift  5  2  1 ! element 122
+
+!@subs 1 1 10
+drift  5.0051027885e+00  2  1 ! element 122, total length = 670.021
+!drift  5  2  1 !
+!drift  5  2  1 !
+
+!xgoal emit4d 0 100000
+!xgoal sigma_l 0 10000
+!drift  5  2  1 !
+!xgoal xmax 0 2000
+
+! ****** buncher, 14-cell, 3GHz, 10MV/m, l = 46.985 cm; sp=670.021--->ep=717.006 ****** 
+cell 4.76 1 1 157.714775383 8.856 3 2 1 2998.08 0 0 0.635 3.79e-1 1.71e-1 6.48e-2 2.46e-2 8.03e-3 4.17e-3 1.34e-3 1.73e-3 5.17e-4 1.13e-3 1.50e-4 6.43e-4 -2.04e-4 ; element 57, total length = 121.64 cm
+
+!@subs 14 4 31
+trwave 1.135 1 1 6.7714775383e+01 8.856 1 2 2998.08 1 -5 5 0.6666667 2 0 0 0 0 0 0 -4.57e-5 -3.02e-5 1.10e-4 -6.39e-3 3.08e-1 1.00 -1.01e-2 6.73e-5 -2.14e-5 -3.87e-5 -5.92e-5 ; element 58, total length = 122.775 cm
+trwave 2.64 1 1 6.7714775383e+01 9.594 1 2 2998.08 2 -5 5 0.6666667 1 0 0 0 0 0 0 -4.57e-5 -3.02e-5 1.10e-4 -6.39e-3 3.08e-1 1.00 -1.01e-2 6.73e-5 -2.14e-5 -3.87e-5 -5.92e-5 ; element 59, total length = 125.415 cm
+trwave 2.86 1 1 6.7714775383e+01 9.84 1 2 2998.08 3 -5 5 0.6666667 1 0 0 0 0 0 0 -4.57e-5 -3.02e-5 1.10e-4 -6.39e-3 3.08e-1 1.00 -1.01e-2 6.73e-5 -2.14e-5 -3.87e-5 -5.92e-5 ; element 60, total length = 128.275 cm
+trwave 3.02 1 1 6.7714775383e+01 10.004 1 2 2998.08 4 -5 5 0.6666667 1 0 0 0 0 0 0 -4.57e-5 -3.02e-5 1.10e-4 -6.39e-3 3.08e-1 1.00 -1.01e-2 6.73e-5 -2.14e-5 -3.87e-5 -5.92e-5 ; element 61, total length = 131.295 cm
+trwave 3.11 1 1 6.7714775383e+01 10.086 1 2 2998.08 5 -5 5 0.6666667 1 0 0 0 0 0 0 2.63e-4 -6.98e-4 2.20e-3 -2.65e-2 3.88e-1 1.00 -3.63e-2 1.57e-3 -4.65e-5 5.58e-4 2.02e-4 ; element 62, total length = 134.405 cm
+trwave 3.19 1 1 6.7714775383e+01 10.086 1 2 2998.08 6 -5 5 0.6666667 1 0 0 0 0 0 0 2.63e-4 -6.98e-4 2.20e-3 -2.65e-2 3.88e-1 1.00 -3.63e-2 1.57e-3 -4.65e-5 5.58e-4 2.02e-4 ; element 63, total length = 137.595 cm
+trwave 3.22 1 1 6.7714775383e+01 10.086 1 2 2998.08 7 -5 5 0.6666667 1 0 0 0 0 0 0 2.63e-4 -6.98e-4 2.20e-3 -2.65e-2 3.88e-1 1.00 -3.63e-2 1.57e-3 -4.65e-5 5.58e-4 2.02e-4 ; element 64, total length = 140.815 cm
+trwave 3.25 1 1 6.7714775383e+01 10.086 1 2 2998.08 8 -5 5 0.6666667 1 0 0 0 0 0 0 2.63e-4 -6.98e-4 2.20e-3 -2.65e-2 3.88e-1 1.00 -3.63e-2 1.57e-3 -4.65e-5 5.58e-4 2.02e-4 ; element 65, total length = 144.065 cm
+trwave 3.28 1 1 6.7714775383e+01 10.086 1 2 2998.08 9 -5 5 0.6666667 3 0 0 0 0 0 0 2.63e-4 -6.98e-4 2.20e-3 -2.65e-2 3.88e-1 1.00 -3.63e-2 1.57e-3 -4.65e-5 5.58e-4 2.02e-4 ; element 66, total length = 147.345 cm
+trwave 3.28 1 1 6.7714775383e+01 10.086 1 2 2998.08 9 ; element 67, total length = 150.625 cm
+trwave 3.28 1 1 6.7714775383e+01 10.086 1 2 2998.08 9 ; element 68, total length = 153.905 cm
+trwave 3.32 1 1 6.7714775383e+01 9.922 1 2 2998.08 10 -5 5 0.6666667 3 0 0 0 0 0 0 2.63e-4 -6.98e-4 2.20e-3 -2.65e-2 3.88e-1 1.00 -3.63e-2 1.57e-3 -4.65e-5 5.58e-4 2.02e-4 ; element 69, total length = 157.225 cm
+trwave 3.32 1 1 6.7714775383e+01 9.922 1 2 2998.08 10 ; element 70, total length = 160.545 cm
+trwave 3.32 1 1 6.7714775383e+01 9.922 1 2 2998.08 10 ; element 71, total length = 163.865 cm
+
+
+! ****** drift 12, length = 9 cm until center WCM 2; sp = 717---> ep = 726 ****** 
+drift  2  1.5  1 ; element 72, total length = 165.865 cm
+drift  2  1.5  1 ; element 73, total length = 167.865 cm
+drift  2  1.5  1 ; element 74, total length = 169.865 cm
+drift  3  1.5  1 ; element 75, total length = 171.665 cm
+
+
+! ****** drift 13, length = 11.8cm until center view screen 2; sp = 726--->737.8 ****** 
+drift  2  1.5  1 ; element 76, total length = 173.665 cm
+drift  2  1.5  1 ; element 77, total length = 175.665 cm
+drift  2  1.5  1 ; element 78, total length = 177.665 cm
+drift  2  1.5  1 ; element 79, total length = 179.665 cm
+drift  2  1.5  1 ; element 80, total length = 181.665 cm
+drift  1.8  1.5  1 ; element 81, total length = 183.465 cm
+
+! ****** drift 14, length = 19.6cm until center BPM 2; sp = 737.8--->757.4 ****** 
+drift  2  1.50  1 ; element 82, total length = 185.465 cm
+drift  2  1.50  1 ; element 83, total length = 187.465 cm
+drift  2  1.50  1 ; element 84, total length = 189.465 cm
+drift  2  1.50  1 ; element 85, total length = 191.465 cm
+drift  2  1.50  1 ; element 86, total length = 193.465 cm
+drift  2.6  1.5  1 ; element 87, total length = 196.065 cm
+
+!xgoal emit4d 0 2000
+!xgoal sigma_l 0 2000
+drift 7 1.5 1
+
+! ****** acc. structure, ACC 1, 156-cell, 3GHz, 9.3 MV/m, l = 501.617 cm, sp=757.4--->1259.017 ****** 
+
+cell 3.333 1.1 1 226 9.3 4 2 1 2998.08 0 0 1.065 3.37e-1 -3.75e-2 -4.41e-2 2.76e-3 3.81e-3 2.03e-3 -2.15e-3 1.16e-3 -1.10e-3 1.12e-3 0.0 0.0 0.0 ; element 99, total length = 221.598 cm
+
+trwave 1.667 1.2 1 136 9.3 2 2 2998.08 11 -5 5 0.6666667 150 0 0 0 0 0 30 2.63e-4 -6.98e-4 2.20e-3 -2.65e-2 3.88e-1 1.00 -3.63e-2 1.57e-3 -4.65e-5 5.58e-4 2.02e-4 ; element 100, total length = 223.265 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 101, total length = 226.598 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 102, total length = 229.931 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 103, total length = 233.264 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 104, total length = 236.597 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 105, total length = 239.93 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 106, total length = 243.263 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 107, total length = 246.596 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 108, total length = 249.929 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 109, total length = 253.262 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 110, total length = 256.595 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 111, total length = 259.928 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 112, total length = 263.261 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 113, total length = 266.594 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 114, total length = 269.927 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 115, total length = 273.26 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 116, total length = 276.593 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 117, total length = 279.926 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 118, total length = 283.259 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 119, total length = 286.592 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 120, total length = 289.925 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 121, total length = 293.258 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 122, total length = 296.591 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 123, total length = 299.924 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 124, total length = 303.257 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 125, total length = 306.59 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 126, total length = 309.923 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 127, total length = 313.256 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 128, total length = 316.589 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 129, total length = 319.922 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 130, total length = 323.255 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 131, total length = 326.588 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 132, total length = 329.921 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 133, total length = 333.254 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 134, total length = 336.587 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 135, total length = 339.92 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 136, total length = 343.253 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 137, total length = 346.586 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 138, total length = 349.919 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 139, total length = 353.252 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 140, total length = 356.585 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 141, total length = 359.918 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 142, total length = 363.251 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 143, total length = 366.584 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 144, total length = 369.917 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 145, total length = 373.25 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 146, total length = 376.583 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 147, total length = 379.916 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 148, total length = 383.249 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 149, total length = 386.582 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 150, total length = 389.915 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 151, total length = 393.248 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 152, total length = 396.581 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 153, total length = 399.914 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 154, total length = 403.247 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 155, total length = 406.58 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 156, total length = 409.913 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 157, total length = 413.246 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 158, total length = 416.579 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 159, total length = 419.912 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 160, total length = 423.245 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 161, total length = 426.578 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 162, total length = 429.911 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 163, total length = 433.244 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 164, total length = 436.577 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 165, total length = 439.91 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 166, total length = 443.243 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 167, total length = 446.576 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 168, total length = 449.909 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 169, total length = 453.242 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 170, total length = 456.575 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 171, total length = 459.908 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 172, total length = 463.241 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 173, total length = 466.574 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 174, total length = 469.907 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 175, total length = 473.24 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 176, total length = 476.573 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 177, total length = 479.906 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 178, total length = 483.239 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 179, total length = 486.572 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 180, total length = 489.905 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 181, total length = 493.238 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 182, total length = 496.571 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 183, total length = 499.904 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 184, total length = 503.237 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 185, total length = 506.57 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 186, total length = 509.903 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 187, total length = 513.236 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 188, total length = 516.569 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 189, total length = 519.902 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 190, total length = 523.235 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 191, total length = 526.568 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 192, total length = 529.901 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 193, total length = 533.234 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 194, total length = 536.567 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 195, total length = 539.9 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 196, total length = 543.233 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 197, total length = 546.566 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 198, total length = 549.899 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 199, total length = 553.232 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 200, total length = 556.565 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 201, total length = 559.898 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 202, total length = 563.231 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 203, total length = 566.564 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 204, total length = 569.897 cm
+trwave 3.333 1.2 1 136 9.3 2 2 2998.08 11 ; element 205, total length = 573.23 cm
+trwave 3.333 1.4 1 136 9.3 2 2 2998.08 11 ; element 206, total length = 576.563 cm
+trwave 3.333 1.4 1 136 9.3 2 2 2998.08 11 ; element 207, total length = 579.896 cm
+trwave 3.333 1.4 1 136 9.3 2 2 2998.08 11 ; element 208, total length = 583.229 cm
+trwave 3.333 1.4 1 136 9.3 2 2 2998.08 11 ; element 209, total length = 586.562 cm
+trwave 3.333 1.4 1 136 9.3 2 2 2998.08 11 ; element 210, total length = 589.895 cm
+trwave 3.333 1.4 1 136 9.3 2 2 2998.08 11 ; element 211, total length = 593.228 cm
+trwave 3.333 1.4 1 136 9.3 2 2 2998.08 11 ; element 212, total length = 596.561 cm
+trwave 3.333 1.4 1 136 9.3 2 2 2998.08 11 ; element 213, total length = 599.894 cm
+trwave 3.333 1.4 1 136 9.3 2 2 2998.08 11 ; element 214, total length = 603.227 cm
+trwave 3.333 1.4 1 136 9.3 2 2 2998.08 11 ; element 215, total length = 606.56 cm
+trwave 3.333 1.4 1 136 9.3 2 2 2998.08 11 ; element 216, total length = 609.893 cm
+trwave 3.333 1.4 1 136 9.3 2 2 2998.08 11 ; element 217, total length = 613.226 cm
+trwave 3.333 1.4 1 136 9.3 2 2 2998.08 11 ; element 218, total length = 616.559 cm
+trwave 3.333 1.4 1 136 9.3 2 2 2998.08 11 ; element 219, total length = 619.892 cm
+trwave 3.333 1.4 1 136 9.3 2 2 2998.08 11 ; element 220, total length = 623.225 cm
+trwave 3.333 1.4 1 136 9.3 2 2 2998.08 11 ; element 221, total length = 626.558 cm
+trwave 3.333 1.4 1 136 9.3 2 2 2998.08 11 ; element 222, total length = 629.891 cm
+trwave 3.333 1.4 1 136 9.3 2 2 2998.08 11 ; element 223, total length = 633.224 cm
+trwave 3.333 1.4 1 136 9.3 2 2 2998.08 11 ; element 224, total length = 636.557 cm
+trwave 3.333 1.4 1 136 9.3 2 2 2998.08 11 ; element 225, total length = 639.89 cm
+trwave 3.333 1.4 1 136 9.3 2 2 2998.08 11 ; element 226, total length = 643.223 cm
+trwave 3.333 1.4 1 136 9.3 2 2 2998.08 11 ; element 227, total length = 646.556 cm
+trwave 3.333 1.4 1 136 9.3 2 2 2998.08 11 ; element 228, total length = 649.889 cm
+trwave 3.333 1.4 1 136 9.3 2 2 2998.08 11 ; element 229, total length = 653.222 cm
+trwave 3.333 1.4 1 136 9.3 2 2 2998.08 11 ; element 230, total length = 656.555 cm
+trwave 3.333 1.4 1 136 9.3 2 2 2998.08 11 ; element 231, total length = 659.888 cm
+trwave 3.333 1.4 1 136 9.3 2 2 2998.08 11 ; element 232, total length = 663.221 cm
+trwave 3.333 1.4 1 136 9.3 2 2 2998.08 11 ; element 233, total length = 666.554 cm
+trwave 3.333 1.4 1 136 9.3 2 2 2998.08 11 ; element 234, total length = 669.887 cm
+trwave 3.333 1.4 1 136 9.3 2 2 2998.08 11 ; element 235, total length = 673.22 cm
+trwave 3.333 1.4 1 136 9.3 2 2 2998.08 11 ; element 236, total length = 676.553 cm
+trwave 3.333 1.4 1 136 9.3 2 2 2998.08 11 ; element 237, total length = 679.886 cm
+trwave 3.333 1.4 1 136 9.3 2 2 2998.08 11 ; element 238, total length = 683.219 cm
+trwave 3.333 1.4 1 136 9.3 2 2 2998.08 11 ; element 239, total length = 686.552 cm
+trwave 3.333 1.4 1 136 9.3 2 2 2998.08 11 ; element 240, total length = 689.885 cm
+trwave 3.333 1.4 1 136 9.3 2 2 2998.08 11 ; element 241, total length = 693.218 cm
+trwave 3.333 1.4 1 136 9.3 2 2 2998.08 11 ; element 242, total length = 696.551 cm
+trwave 3.333 1.4 1 136 9.3 2 2 2998.08 11 ; element 243, total length = 699.884 cm
+trwave 3.333 1.4 1 136 9.3 2 2 2998.08 11 ; element 244, total length = 703.217 cm
+trwave 3.333 1.4 1 136 9.3 2 2 2998.08 11 ; element 245, total length = 706.55 cm
+trwave 3.333 1.4 1 136 9.3 2 2 2998.08 11 ; element 246, total length = 709.883 cm
+trwave 3.333 1.4 1 136 9.3 2 2 2998.08 11 ; element 247, total length = 713.216 cm
+trwave 3.333 1.4 1 136 9.3 2 2 2998.08 11 ; element 248, total length = 716.549 cm
+trwave 3.333 1.4 1 136 9.3 2 2 2998.08 11 ; element 249, total length = 719.882 cm
+
+
+
+
+
+;*****1st quad**********
+
+; ****** drift 16, length = 19.998cm, load cells, sp = 1259.017 ---> ep = 1279.015 ****** 
+drift  3.333  1.5  1 ; element 250, total length = 723.215 cm
+drift  3.333  1.5  1 ; element 251, total length = 726.548 cm
+drift  3.333  1.5  1 ; element 252, total length = 729.881 cm
+drift  3.333  1.5  1 ; element 253, total length = 733.214 cm
+drift  3.333  1.5  1 ; element 254, total length = 736.547 cm
+drift  3.333  1.5  1 ; element 255, total length = 739.88 cm
+
+; ****** drift 17, length = 9.93cm, exit ACC1, bellow, begin MEBT1, sp=1279.015 --->1288.945 ****** 
+drift  5  1.5  1 ; element 256, total length = 744.88 cm
+drift  4.93  1.5  1 ; element 257, total length = 749.81 cm
+
+; ****** drift 18, length = 26.1cm,  pump port, valve, until center BPM, sp=1288.945--->ep=1315.045 ****** 
+drift  5  1.5  1 ; element 258, total length = 754.81 cm
+drift  5  1.5  1 ; element 259, total length = 759.81 cm
+drift  5  1.5  1 ; element 260, total length = 764.81 cm
+drift  5  1.5  1 ; element 261, total length = 769.81 cm
+drift  6.1  1.5  1 ; element 262, total length = 775.91 cm
+
+; ****** drift 19, length = 11.7cm, until Q1, sp=1315.045--->ep=1326.745 ****** 
+drift  5  1.5  1 ; element 263, total length = 780.91 cm
+drift  6.7  1.5  1 ; element 264, total length = 787.61 cm
+
+; ****** quad 01, QF length =10 cm, gradient x.x G/cm, sp=1326.745--->1336.745 ****** 
+quad  10  1.7  1  -112 ; element 265, total length = 797.61 cm
+
+; ****** drift 20, length = 12.5cm until center WCM, sp=1336.745--->1349.245 ****** 
+drift  5  1.5  1 ; element 266, total length = 802.61 cm
+drift  5  1.5  1 ; element 267, total length = 807.61 cm
+drift  2.5  1.5  1 ; element 268, total length = 810.11 cm
+
+; ****** drift 21, length = 12.5cm until Q2, sp=1349.245--->1361.745 ****** 
+drift  5  1.5  1 ; element 269, total length = 815.11 cm
+drift  5  1.5  1 ; element 270, total length = 820.11 cm
+drift  2.5  1.5  1 ; element 271, total length = 822.61 cm
+
+; ****** quad 02, QD length =10 cm, gradient x.x G/cm; sp=1361.745--->1371.745 ****** 
+quad  10  1.7  1  221 ; element 272, total length = 832.61 cm
+
+; ****** drift 22, length = 25cm Q2-Q3; sp==1371.745--->1396.745 ****** 
+drift  5  1.5  1 ; element 273, total length = 837.61 cm
+drift  5  1.5  1 ; element 274, total length = 842.61 cm
+drift  5  1.5  1 ; element 275, total length = 847.61 cm
+drift  5  1.5  1 ; element 276, total length = 852.61 cm
+drift  5  1.5  1 ; element 277, total length = 857.61 cm
+
+; ****** quad 03, QF length =10 cm, gradient x.x G/cm; sp=1396.745--->1406.745 ****** 
+quad  10  1.7  1  -124 ; element 278, total length = 867.61 cm
+
+; ****** drift 23, length = 14.4cm until center view port; sp=1406.745--->1420.745 ****** 
+drift  5  1.5  1 ; element 279, total length = 872.61 cm
+drift  5  1.5  1 ; element 280, total length = 877.61 cm
+drift  4.4  1.5  1 ; element 281, total length = 882.01 cm
+
+; ****** drift 24, length = 206.3cm center view port until end of 2m drift; sp=1420.745--->1627.045 ****** 
+drift  6.3  1.5  1 ; element 282, total length = 888.31 cm
+drift  10  1.5  1 ; element 283, total length = 898.31 cm
+drift  10  1.5  1 ; element 284, total length = 908.31 cm
+drift  10  1.5  1 ; element 285, total length = 918.31 cm
+drift  10  1.5  1 ; element 286, total length = 928.31 cm
+drift  10  1.5  1 ; element 287, total length = 938.31 cm
+drift  10  1.5  1 ; element 288, total length = 948.31 cm
+drift  10  1.5  1 ; element 289, total length = 958.31 cm
+drift  10  1.5  1 ; element 290, total length = 968.31 cm
+drift  10  1.5  1 ; element 291, total length = 978.31 cm
+drift  10  1.5  1 ; element 292, total length = 988.31 cm
+drift  10  1.5  1 ; element 293, total length = 998.31 cm
+drift  10  1.5  1 ; element 294, total length = 1008.31 cm
+drift  10  1.5  1 ; element 295, total length = 1018.31 cm
+drift  10  1.5  1 ; element 296, total length = 1028.31 cm
+drift  10  1.5  1 ; element 297, total length = 1038.31 cm
+drift  10  1.5  1 ; element 298, total length = 1048.31 cm
+drift  10  1.5  1 ; element 299, total length = 1058.31 cm
+drift  10  1.5  1 ; element 300, total length = 1068.31 cm
+drift  10  1.5  1 ; element 301, total length = 1078.31 cm
+drift  10  1.5  1 ; element 302, total length = 1088.31 cm
+
+; ****** drift 25, length = 8.7cm until ACC 2; sp=1627.045--->1635.745 ****** 
+drift  5  1.5  1 ; element 303, total length = 1093.31 cm
+drift  3.7  1.5  1 ; element 304, total length = 1097.01 cm
+
+
+; ****** acc. structure, ACC 2, 156-cell, 3GHz, 10.23 MV/m, l = 501.617 cm; sp=1635.745--->ep=2137.362****** 
+cell 3.333 1.1 1 272 10.23 5 2 1 2998.08 0 0 1.065 3.37e-1 -3.75e-2 -4.41e-2 2.76e-3 3.81e-3 2.03e-3 -2.15e-3 1.16e-3 -1.10e-3 1.12e-3 0.0 0.0 0.0 ; element 305, total length = 1100.343 cm
+
+trwave 1.667 1.1 1 182 10.23 3 2 2998.08 12 -5 5 0.6666667 150 0 0 0 0 0 30 2.63e-4 -6.98e-4 2.20e-3 -2.65e-2 3.88e-1 1.00 -3.63e-2 1.57e-3 -4.65e-5 5.58e-4 2.02e-4 ; element 306, total length = 1102.01 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 307, total length = 1105.343 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 308, total length = 1108.676 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 309, total length = 1112.009 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 310, total length = 1115.342 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 311, total length = 1118.675 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 312, total length = 1122.008 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 313, total length = 1125.341 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 314, total length = 1128.674 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 315, total length = 1132.007 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 316, total length = 1135.34 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 317, total length = 1138.673 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 318, total length = 1142.006 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 319, total length = 1145.339 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 320, total length = 1148.672 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 321, total length = 1152.005 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 322, total length = 1155.338 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 323, total length = 1158.671 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 324, total length = 1162.004 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 325, total length = 1165.337 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 326, total length = 1168.67 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 327, total length = 1172.003 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 328, total length = 1175.336 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 329, total length = 1178.669 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 330, total length = 1182.002 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 331, total length = 1185.335 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 332, total length = 1188.668 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 333, total length = 1192.001 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 334, total length = 1195.334 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 335, total length = 1198.667 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 336, total length = 1202 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 337, total length = 1205.333 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 338, total length = 1208.666 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 339, total length = 1211.999 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 340, total length = 1215.332 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 341, total length = 1218.665 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 342, total length = 1221.998 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 343, total length = 1225.331 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 344, total length = 1228.664 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 345, total length = 1231.997 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 346, total length = 1235.33 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 347, total length = 1238.663 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 348, total length = 1241.996 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 349, total length = 1245.329 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 350, total length = 1248.662 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 351, total length = 1251.995 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 352, total length = 1255.328 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 353, total length = 1258.661 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 354, total length = 1261.994 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 355, total length = 1265.327 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 356, total length = 1268.66 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 357, total length = 1271.993 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 358, total length = 1275.326 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 359, total length = 1278.659 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 360, total length = 1281.992 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 361, total length = 1285.325 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 362, total length = 1288.658 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 363, total length = 1291.991 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 364, total length = 1295.324 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 365, total length = 1298.657 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 366, total length = 1301.99 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 367, total length = 1305.323 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 368, total length = 1308.656 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 369, total length = 1311.989 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 370, total length = 1315.322 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 371, total length = 1318.655 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 372, total length = 1321.988 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 373, total length = 1325.321 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 374, total length = 1328.654 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 375, total length = 1331.987 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 376, total length = 1335.32 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 377, total length = 1338.653 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 378, total length = 1341.986 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 379, total length = 1345.319 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 380, total length = 1348.652 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 381, total length = 1351.985 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 382, total length = 1355.318 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 383, total length = 1358.651 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 384, total length = 1361.984 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 385, total length = 1365.317 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 386, total length = 1368.65 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 387, total length = 1371.983 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 388, total length = 1375.316 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 389, total length = 1378.649 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 390, total length = 1381.982 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 391, total length = 1385.315 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 392, total length = 1388.648 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 393, total length = 1391.981 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 394, total length = 1395.314 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 395, total length = 1398.647 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 396, total length = 1401.98 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 397, total length = 1405.313 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 398, total length = 1408.646 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 399, total length = 1411.979 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 400, total length = 1415.312 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 401, total length = 1418.645 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 402, total length = 1421.978 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 403, total length = 1425.311 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 404, total length = 1428.644 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 405, total length = 1431.977 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 406, total length = 1435.31 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 407, total length = 1438.643 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 408, total length = 1441.976 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 409, total length = 1445.309 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 410, total length = 1448.642 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 411, total length = 1451.975 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 412, total length = 1455.308 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 413, total length = 1458.641 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 414, total length = 1461.974 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 415, total length = 1465.307 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 416, total length = 1468.64 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 417, total length = 1471.973 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 418, total length = 1475.306 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 419, total length = 1478.639 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 420, total length = 1481.972 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 421, total length = 1485.305 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 422, total length = 1488.638 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 423, total length = 1491.971 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 424, total length = 1495.304 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 425, total length = 1498.637 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 426, total length = 1501.97 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 427, total length = 1505.303 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 428, total length = 1508.636 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 429, total length = 1511.969 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 430, total length = 1515.302 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 431, total length = 1518.635 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 432, total length = 1521.968 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 433, total length = 1525.301 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 434, total length = 1528.634 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 435, total length = 1531.967 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 436, total length = 1535.3 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 437, total length = 1538.633 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 438, total length = 1541.966 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 439, total length = 1545.299 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 440, total length = 1548.632 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 441, total length = 1551.965 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 442, total length = 1555.298 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 443, total length = 1558.631 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 444, total length = 1561.964 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 445, total length = 1565.297 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 446, total length = 1568.63 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 447, total length = 1571.963 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 448, total length = 1575.296 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 449, total length = 1578.629 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 450, total length = 1581.962 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 451, total length = 1585.295 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 452, total length = 1588.628 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 453, total length = 1591.961 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 454, total length = 1595.294 cm
+trwave 3.333 1.1 1 182 10.23 3 2 2998.08 12 ; element 455, total length = 1598.627 cm
+
+
+;*****2nd quad**********
+; ****** drift 35, length = 19.998cm, load cells, sp=2137.362--->2157.36 ****** 
+drift  3.333  1.1  1 ; element 642, total length = 2280.705 cm
+drift  3.333  1.1  1 ; element 643, total length = 2284.038 cm
+drift  3.333  1.1  1 ; element 644, total length = 2287.371 cm
+drift  3.333  1.1  1 ; element 645, total length = 2290.704 cm
+drift  3.333  1.1  1 ; element 646, total length = 2294.037 cm
+drift  3.333  1.1  1 ; element 647, total length = 2297.37 cm
+
+; ****** drift 36, length = 9.93cm, exit acc3, bellow, begin MEBT3, sp=2157.36--->2167.29 ****** 
+drift  5  1.5  1 ; element 648, total length = 2302.37 cm
+drift  4.93  1.5  1 ; element 649, total length = 2307.3 cm
+
+; ****** drift 37, length = 26.1cm,  pump port, valve, until center BPM, sp = 2167.29--->2193.39 ****** 
+drift  5  1.5  1 ; element 650, total length = 2312.3 cm
+drift  5  1.5  1 ; element 651, total length = 2317.3 cm
+drift  5  1.5  1 ; element 652, total length = 2322.3 cm
+drift  5  1.5  1 ; element 653, total length = 2327.3 cm
+drift  6.1  1.5  1 ; element 654, total length = 2333.4 cm
+
+; ****** drift 38, length = 11.7cm, until Q7, sp=2193.39--->2205.09 ****** 
+drift  5  1.5  1 ; element 655, total length = 2338.4 cm
+drift  6.7  1.5  1 ; element 656, total length = 2345.1 cm
+
+; ****** quad 07, QF length =10 cm, gradient -180 G/cm; sp=2205.09--->ep=2215.09 ****** 
+quad  10  1.7  1  -174 ; element 657, total length = 2355.1 cm
+
+; ****** drift 39, length = 12.5cm until center WCM; sp=2215.09--->2227.59 ****** 
+drift  5  1.5  1 ; element 658, total length = 2360.1 cm
+drift  5  1.5  1 ; element 659, total length = 2365.1 cm
+drift  2.5  1.5  1 ; element 660, total length = 2367.6 cm
+
+; ****** drift 40, length = 12.5cm until Q8; sp=2227.59--->2240.09 ****** 
+drift  5  1.5  1 ; element 661, total length = 2372.6 cm
+drift  5  1.5  1 ; element 662, total length = 2377.6 cm
+drift  2.5  1.5  1 ; element 663, total length = 2380.1 cm
+
+; ****** quad 08, QD length =10 cm, gradient 360 G/cm;  ****** 
+quad  10  1.7  1  325 ; element 664, total length = 2390.1 cm
+
+; ****** drift 41, length = 25cm Q8 to Q9; sp=2250.09--->2275.09 ****** 
+drift  5  1.5  1 ; element 665, total length = 2395.1 cm
+drift  5  1.5  1 ; element 666, total length = 2400.1 cm
+drift  5  1.5  1 ; element 667, total length = 2405.1 cm
+drift  5  1.5  1 ; element 668, total length = 2410.1 cm
+drift  5  1.5  1 ; element 669, total length = 2415.1 cm
+
+; ****** quad 09, QF length =10 cm, gradient -180 G/cm ****** 
+quad  10  1.7  1  -163.6 ; element 670, total length = 2425.1 cm
+
+; ****** drift 42, length =14.4cm until center view port; sp=2285.09--->2299.49 ****** 
+drift  5  1.5  1 ; element 671, total length = 2430.1 cm
+drift  5  1.5  1 ; element 672, total length = 2435.1 cm
+drift  4.4  1.5  1 ; element 673, total length = 2439.5 cm
+
+; ****** drift 43, length =15.0cm until ACC4; sp=2299.49--->2314.49 ****** 
+drift  5  1.5  1 ; element 674, total length = 2444.5 cm
+drift  5  1.5  1 ; element 675, total length = 2449.5 cm
+drift  5  1.5  1 ; element 676, total length = 2454.5 cm
+
+
+; ****** quad 08, QD length =10 cm, gradient 360 G/cm ****** 
+quad  10  1.7  1  558 ; element 664, total length = 2390.1 cm
+
+; ****** drift 41, length = 25cm Q8 to Q9; sp=2324.49--->2349.49 ****** 
+drift  5  1.5  1 ; element 665, total length = 2395.1 cm
+drift  5  1.5  1 ; element 666, total length = 2400.1 cm
+drift  5  1.5  1 ; element 667, total length = 2405.1 cm
+drift  5  1.5  1 ; element 668, total length = 2410.1 cm
+drift  5  1.5  1 ; element 669, total length = 2415.1 cm
+
+; ****** quad 09, QF length =10 cm, gradient -180 G/cm ****** 
+quad  10  1.7  1  -282 ; element 670, total length = 2425.1 cm
+
+; ****** drift 42, length =14.4cm until center view port; sp=2359.49--->ep=2373.89 ****** 
+drift  5  1.5  1 ; element 671, total length = 2430.1 cm
+drift  5  1.5  1 ; element 672, total length = 2435.1 cm
+drift  4.4  1.5  1 ; element 673, total length = 2439.5 cm
+
+; ****** drift 43, length =15.0cm until ACC4; sp=2373.89--->2388.89 ****** 
+drift  5  1.5  1 ; element 674, total length = 2444.5 cm
+drift  5  1.5  1 ; element 675, total length = 2449.5 cm
+drift  5  1.5  1 ; element 676, total length = 2454.5 cm
+
+
+
+! solenoid 01, solenoid 1400 turns (in simulation 88 turns),start=244.6 cm, current = 25.5 A / 88 = 1.6 A
+!@subs 88 3 19
+coil  224.6  5.35   5.5480222472e+01  200  880
+coil  225.4  5.35   5.5480222472e+01
+coil  226.2  5.35   5.5480222472e+01
+coil  227.0  5.35   5.5480222472e+01
+coil  227.8  5.35   5.5480222472e+01
+coil  228.6  5.35   5.5480222472e+01
+coil  229.4  5.35   5.5480222472e+01
+coil  230.2  5.35   5.5480222472e+01
+coil  224.6  6.05   5.5480222472e+01
+coil  225.4  6.05   5.5480222472e+01
+coil  226.2  6.05   5.5480222472e+01
+coil  227.0  6.05   5.5480222472e+01
+coil  227.8  6.05   5.5480222472e+01
+coil  228.6  6.05   5.5480222472e+01
+coil  229.4  6.05   5.5480222472e+01
+coil  230.2  6.05   5.5480222472e+01
+coil  224.6  6.75   5.5480222472e+01
+coil  225.4  6.75   5.5480222472e+01
+coil  226.2  6.75   5.5480222472e+01
+coil  227.0  6.75   5.5480222472e+01
+coil  227.8  6.75   5.5480222472e+01
+coil  228.6  6.75   5.5480222472e+01
+coil  229.4  6.75   5.5480222472e+01
+coil  230.2  6.75   5.5480222472e+01
+coil  224.6  7.45   5.5480222472e+01
+coil  225.4  7.45   5.5480222472e+01
+coil  226.2  7.45   5.5480222472e+01
+coil  227.0  7.45   5.5480222472e+01
+coil  227.8  7.45   5.5480222472e+01
+coil  228.6  7.45   5.5480222472e+01
+coil  229.4  7.45   5.5480222472e+01
+coil  230.2  7.45   5.5480222472e+01
+coil  224.6  8.15   5.5480222472e+01
+coil  225.4  8.15   5.5480222472e+01
+coil  226.2  8.15   5.5480222472e+01
+coil  227.0  8.15   5.5480222472e+01
+coil  227.8  8.15   5.5480222472e+01
+coil  228.6  8.15   5.5480222472e+01
+coil  229.4  8.15   5.5480222472e+01
+coil  230.2  8.15   5.5480222472e+01
+coil  224.6  8.85   5.5480222472e+01
+coil  225.4  8.85   5.5480222472e+01
+coil  226.2  8.85   5.5480222472e+01
+coil  227.0  8.85   5.5480222472e+01
+coil  227.8  8.85   5.5480222472e+01
+coil  228.6  8.85   5.5480222472e+01
+coil  229.4  8.85   5.5480222472e+01
+coil  230.2  8.85   5.5480222472e+01
+coil  224.6  9.55   5.5480222472e+01
+coil  225.4  9.55   5.5480222472e+01
+coil  226.2  9.55   5.5480222472e+01
+coil  227.0  9.55   5.5480222472e+01
+coil  227.8  9.55   5.5480222472e+01
+coil  228.6  9.55   5.5480222472e+01
+coil  229.4  9.55   5.5480222472e+01
+coil  230.2  9.55   5.5480222472e+01
+coil  224.6  10.25  5.5480222472e+01
+coil  225.4  10.25  5.5480222472e+01
+coil  226.2  10.25  5.5480222472e+01
+coil  227.0  10.25  5.5480222472e+01
+coil  227.8  10.25  5.5480222472e+01
+coil  228.6  10.25  5.5480222472e+01
+coil  229.4  10.25  5.5480222472e+01
+coil  230.2  10.25  5.5480222472e+01
+coil  224.6  10.95  5.5480222472e+01
+coil  225.4  10.95  5.5480222472e+01
+coil  226.2  10.95  5.5480222472e+01
+coil  227.0  10.95  5.5480222472e+01
+coil  227.8  10.95  5.5480222472e+01
+coil  228.6  10.95  5.5480222472e+01
+coil  229.4  10.95  5.5480222472e+01
+coil  230.2  10.95  5.5480222472e+01
+coil  224.6  11.65  5.5480222472e+01
+coil  225.4  11.65  5.5480222472e+01
+coil  226.2  11.65  5.5480222472e+01
+coil  227.0  11.65  5.5480222472e+01
+coil  227.8  11.65  5.5480222472e+01
+coil  228.6  11.65  5.5480222472e+01
+coil  229.4  11.65  5.5480222472e+01
+coil  230.2  11.65  5.5480222472e+01
+coil  224.6  12.35  5.5480222472e+01
+coil  225.4  12.35  5.5480222472e+01
+coil  226.2  12.35  5.5480222472e+01
+coil  227.0  12.35  5.5480222472e+01
+coil  227.8  12.35  5.5480222472e+01
+coil  228.6  12.35  5.5480222472e+01
+coil  229.4  12.35  5.5480222472e+01
+coil  230.2  12.35  5.5480222472e+01
+
+! solenoid 02, solenoid 66 turns before SPB, current = 70 A
+!@subs 66 3 20
+coil  250.2  13.65  9.1888370597e+01
+coil  251  13.65    9.1888370597e+01
+coil  251.8  13.65  9.1888370597e+01
+coil  252.6  13.65  9.1888370597e+01
+coil  253.4  13.65  9.1888370597e+01
+coil  254.2  13.65  9.1888370597e+01
+coil  250.2  14.45  9.1888370597e+01
+coil  251  14.45    9.1888370597e+01
+coil  251.8  14.45  9.1888370597e+01
+coil  252.6  14.45  9.1888370597e+01
+coil  253.4  14.45  9.1888370597e+01
+coil  254.2  14.45  9.1888370597e+01
+coil  250.2  15.25  9.1888370597e+01
+coil  251  15.25    9.1888370597e+01
+coil  251.8  15.25  9.1888370597e+01
+coil  252.6  15.25  9.1888370597e+01
+coil  253.4  15.25  9.1888370597e+01
+coil  254.2  15.25  9.1888370597e+01
+coil  250.2  16.05  9.1888370597e+01
+coil  251  16.05    9.1888370597e+01
+coil  251.8  16.05  9.1888370597e+01
+coil  252.6  16.05  9.1888370597e+01
+coil  253.4  16.05  9.1888370597e+01
+coil  254.2  16.05  9.1888370597e+01
+coil  250.2  16.85  9.1888370597e+01
+coil  251  16.85    9.1888370597e+01
+coil  251.8  16.85  9.1888370597e+01
+coil  252.6  16.85  9.1888370597e+01
+coil  253.4  16.85  9.1888370597e+01
+coil  254.2  16.85  9.1888370597e+01
+coil  250.2  17.65  9.1888370597e+01
+coil  251  17.65    9.1888370597e+01
+coil  251.8  17.65  9.1888370597e+01
+coil  252.6  17.65  9.1888370597e+01
+coil  253.4  17.65  9.1888370597e+01
+coil  254.2  17.65  9.1888370597e+01
+coil  250.2  18.45  9.1888370597e+01
+coil  251  18.45    9.1888370597e+01
+coil  251.8  18.45  9.1888370597e+01
+coil  252.6  18.45  9.1888370597e+01
+coil  253.4  18.45  9.1888370597e+01
+coil  254.2  18.45  9.1888370597e+01
+coil  250.2  19.25  9.1888370597e+01
+coil  251  19.25    9.1888370597e+01
+coil  251.8  19.25  9.1888370597e+01
+coil  252.6  19.25  9.1888370597e+01
+coil  253.4  19.25  9.1888370597e+01
+coil  254.2  19.25  9.1888370597e+01
+coil  250.2  20.05  9.1888370597e+01
+coil  251  20.05    9.1888370597e+01
+coil  251.8  20.05  9.1888370597e+01
+coil  252.6  20.05  9.1888370597e+01
+coil  253.4  20.05  9.1888370597e+01
+coil  254.2  20.05  9.1888370597e+01
+coil  250.2  20.85  9.1888370597e+01
+coil  251  20.85    9.1888370597e+01
+coil  251.8  20.85  9.1888370597e+01
+coil  252.6  20.85  9.1888370597e+01
+coil  253.4  20.85  9.1888370597e+01
+coil  254.2  20.85  9.1888370597e+01
+coil  250.2  21.65  9.1888370597e+01
+coil  251  21.65    9.1888370597e+01
+coil  251.8  21.65  9.1888370597e+01
+coil  252.6  21.65  9.1888370597e+01
+coil  253.4  21.65  9.1888370597e+01
+coil  254.2  21.65  9.1888370597e+01
+
+! solenoid 03, solenoid 66 turns behind SPB, current = 70 A
+!@subs 66 3 21
+coil  274  13.65    1.0691786888e+02
+coil  274.8  13.65  1.0691786888e+02
+coil  275.6  13.65  1.0691786888e+02
+coil  276.4  13.65  1.0691786888e+02
+coil  277.2  13.65  1.0691786888e+02
+coil  278  13.65    1.0691786888e+02
+coil  274  14.45    1.0691786888e+02
+coil  274.8  14.45  1.0691786888e+02
+coil  275.6  14.45  1.0691786888e+02
+coil  276.4  14.45  1.0691786888e+02
+coil  277.2  14.45  1.0691786888e+02
+coil  278  14.45    1.0691786888e+02
+coil  274  15.25    1.0691786888e+02
+coil  274.8  15.25  1.0691786888e+02
+coil  275.6  15.25  1.0691786888e+02
+coil  276.4  15.25  1.0691786888e+02
+coil  277.2  15.25  1.0691786888e+02
+coil  278  15.25    1.0691786888e+02
+coil  274  16.05    1.0691786888e+02
+coil  274.8  16.05  1.0691786888e+02
+coil  275.6  16.05  1.0691786888e+02
+coil  276.4  16.05  1.0691786888e+02
+coil  277.2  16.05  1.0691786888e+02
+coil  278  16.05    1.0691786888e+02
+coil  274  16.85    1.0691786888e+02
+coil  274.8  16.85  1.0691786888e+02
+coil  275.6  16.85  1.0691786888e+02
+coil  276.4  16.85  1.0691786888e+02
+coil  277.2  16.85  1.0691786888e+02
+coil  278  16.85    1.0691786888e+02
+coil  274  17.65    1.0691786888e+02
+coil  274.8  17.65  1.0691786888e+02
+coil  275.6  17.65  1.0691786888e+02
+coil  276.4  17.65  1.0691786888e+02
+coil  277.2  17.65  1.0691786888e+02
+coil  278  17.65    1.0691786888e+02
+coil  274  18.45    1.0691786888e+02
+coil  274.8  18.45  1.0691786888e+02
+coil  275.6  18.45  1.0691786888e+02
+coil  276.4  18.45  1.0691786888e+02
+coil  277.2  18.45  1.0691786888e+02
+coil  278  18.45    1.0691786888e+02
+coil  274  19.25    1.0691786888e+02
+coil  274.8  19.25  1.0691786888e+02
+coil  275.6  19.25  1.0691786888e+02
+coil  276.4  19.25  1.0691786888e+02
+coil  277.2  19.25  1.0691786888e+02
+coil  278  19.25    1.0691786888e+02
+coil  274  20.05    1.0691786888e+02
+coil  274.8  20.05  1.0691786888e+02
+coil  275.6  20.05  1.0691786888e+02
+coil  276.4  20.05  1.0691786888e+02
+coil  277.2  20.05  1.0691786888e+02
+coil  278  20.05    1.0691786888e+02
+coil  274  20.85    1.0691786888e+02
+coil  274.8  20.85  1.0691786888e+02
+coil  275.6  20.85  1.0691786888e+02
+coil  276.4  20.85  1.0691786888e+02
+coil  277.2  20.85  1.0691786888e+02
+coil  278  20.85    1.0691786888e+02
+coil  274  21.65    1.0691786888e+02
+coil  274.8  21.65  1.0691786888e+02
+coil  275.6  21.65  1.0691786888e+02
+coil  276.4  21.65  1.0691786888e+02
+coil  277.2  21.65  1.0691786888e+02
+coil  278  21.65    1.0691786888e+02
+
+! solenoid 04, solenoid 66 turns behind SPB, current = 70 A
+!@subs 66 3 22
+coil  298  13.65    1.0916911505e+02
+coil  298.8  13.65  1.0916911505e+02
+coil  299.6  13.65  1.0916911505e+02
+coil  300.4  13.65  1.0916911505e+02
+coil  301.2  13.65  1.0916911505e+02
+coil  302  13.65    1.0916911505e+02
+coil  298  14.45    1.0916911505e+02
+coil  298.8  14.45  1.0916911505e+02
+coil  299.6  14.45  1.0916911505e+02
+coil  300.4  14.45  1.0916911505e+02
+coil  301.2  14.45  1.0916911505e+02
+coil  302  14.45    1.0916911505e+02
+coil  298  15.25    1.0916911505e+02
+coil  298.8  15.25  1.0916911505e+02
+coil  299.6  15.25  1.0916911505e+02
+coil  300.4  15.25  1.0916911505e+02
+coil  301.2  15.25  1.0916911505e+02
+coil  302  15.25    1.0916911505e+02
+coil  298  16.05    1.0916911505e+02
+coil  298.8  16.05  1.0916911505e+02
+coil  299.6  16.05  1.0916911505e+02
+coil  300.4  16.05  1.0916911505e+02
+coil  301.2  16.05  1.0916911505e+02
+coil  302  16.05    1.0916911505e+02
+coil  298  16.85    1.0916911505e+02
+coil  298.8  16.85  1.0916911505e+02
+coil  299.6  16.85  1.0916911505e+02
+coil  300.4  16.85  1.0916911505e+02
+coil  301.2  16.85  1.0916911505e+02
+coil  302  16.85    1.0916911505e+02
+coil  298  17.65    1.0916911505e+02
+coil  298.8  17.65  1.0916911505e+02
+coil  299.6  17.65  1.0916911505e+02
+coil  300.4  17.65  1.0916911505e+02
+coil  301.2  17.65  1.0916911505e+02
+coil  302  17.65    1.0916911505e+02
+coil  298  18.45    1.0916911505e+02
+coil  298.8  18.45  1.0916911505e+02
+coil  299.6  18.45  1.0916911505e+02
+coil  300.4  18.45  1.0916911505e+02
+coil  301.2  18.45  1.0916911505e+02
+coil  302  18.45    1.0916911505e+02
+coil  298  19.25    1.0916911505e+02
+coil  298.8  19.25  1.0916911505e+02
+coil  299.6  19.25  1.0916911505e+02
+coil  300.4  19.25  1.0916911505e+02
+coil  301.2  19.25  1.0916911505e+02
+coil  302  19.25    1.0916911505e+02
+coil  298  20.05    1.0916911505e+02
+coil  298.8  20.05  1.0916911505e+02
+coil  299.6  20.05  1.0916911505e+02
+coil  300.4  20.05  1.0916911505e+02
+coil  301.2  20.05  1.0916911505e+02
+coil  302  20.05    1.0916911505e+02
+coil  298  20.85    1.0916911505e+02
+coil  298.8  20.85  1.0916911505e+02
+coil  299.6  20.85  1.0916911505e+02
+coil  300.4  20.85  1.0916911505e+02
+coil  301.2  20.85  1.0916911505e+02
+coil  302  20.85    1.0916911505e+02
+coil  298  21.65    1.0916911505e+02
+coil  298.8  21.65  1.0916911505e+02
+coil  299.6  21.65  1.0916911505e+02
+coil  300.4  21.65  1.0916911505e+02
+coil  301.2  21.65  1.0916911505e+02
+coil  302  21.65    1.0916911505e+02
+
+
+! solenoid 06, solenoid 66 turns behind SPB, current = 70 A
+!@subs 66 3 11
+coil  322  13.65    1.4964178626e+02
+coil  322.8  13.65  1.4964178626e+02
+coil  323.6  13.65  1.4964178626e+02
+coil  324.4  13.65  1.4964178626e+02
+coil  325.2  13.65  1.4964178626e+02
+coil  326  13.65    1.4964178626e+02
+coil  322  14.45    1.4964178626e+02
+coil  322.8  14.45  1.4964178626e+02
+coil  323.6  14.45  1.4964178626e+02
+coil  324.4  14.45  1.4964178626e+02
+coil  325.2  14.45  1.4964178626e+02
+coil  326  14.45    1.4964178626e+02
+coil  322  15.25    1.4964178626e+02
+coil  322.8  15.25  1.4964178626e+02
+coil  323.6  15.25  1.4964178626e+02
+coil  324.4  15.25  1.4964178626e+02
+coil  325.2  15.25  1.4964178626e+02
+coil  326  15.25    1.4964178626e+02
+coil  322  16.05    1.4964178626e+02
+coil  322.8  16.05  1.4964178626e+02
+coil  323.6  16.05  1.4964178626e+02
+coil  324.4  16.05  1.4964178626e+02
+coil  325.2  16.05  1.4964178626e+02
+coil  326  16.05    1.4964178626e+02
+coil  322  16.85    1.4964178626e+02
+coil  322.8  16.85  1.4964178626e+02
+coil  323.6  16.85  1.4964178626e+02
+coil  324.4  16.85  1.4964178626e+02
+coil  325.2  16.85  1.4964178626e+02
+coil  326  16.85    1.4964178626e+02
+coil  322  17.65    1.4964178626e+02
+coil  322.8  17.65  1.4964178626e+02
+coil  323.6  17.65  1.4964178626e+02
+coil  324.4  17.65  1.4964178626e+02
+coil  325.2  17.65  1.4964178626e+02
+coil  326  17.65    1.4964178626e+02
+coil  322  18.45    1.4964178626e+02
+coil  322.8  18.45  1.4964178626e+02
+coil  323.6  18.45  1.4964178626e+02
+coil  324.4  18.45  1.4964178626e+02
+coil  325.2  18.45  1.4964178626e+02
+coil  326  18.45    1.4964178626e+02
+coil  322  19.25    1.4964178626e+02
+coil  322.8  19.25  1.4964178626e+02
+coil  323.6  19.25  1.4964178626e+02
+coil  324.4  19.25  1.4964178626e+02
+coil  325.2  19.25  1.4964178626e+02
+coil  326  19.25    1.4964178626e+02
+coil  322  20.05    1.4964178626e+02
+coil  322.8  20.05  1.4964178626e+02
+coil  323.6  20.05  1.4964178626e+02
+coil  324.4  20.05  1.4964178626e+02
+coil  325.2  20.05  1.4964178626e+02
+coil  326  20.05    1.4964178626e+02
+coil  322  20.85    1.4964178626e+02
+coil  322.8  20.85  1.4964178626e+02
+coil  323.6  20.85  1.4964178626e+02
+coil  324.4  20.85  1.4964178626e+02
+coil  325.2  20.85  1.4964178626e+02
+coil  326  20.85    1.4964178626e+02
+coil  322  21.65    1.4964178626e+02
+coil  322.8  21.65  1.4964178626e+02
+coil  323.6  21.65  1.4964178626e+02
+coil  324.4  21.65  1.4964178626e+02
+coil  325.2  21.65  1.4964178626e+02
+coil  326  21.65    1.4964178626e+02
+
+! solenoid 06, solenoid 66 turns behind SPB, current = 70 A
+!@subs 66 3 12
+coil  346  13.65    2.1991927526e+02
+coil  346.8  13.65  2.1991927526e+02
+coil  347.6  13.65  2.1991927526e+02
+coil  348.4  13.65  2.1991927526e+02
+coil  349.2  13.65  2.1991927526e+02
+coil  350  13.65    2.1991927526e+02
+coil  346  14.45    2.1991927526e+02
+coil  346.8  14.45  2.1991927526e+02
+coil  347.6  14.45  2.1991927526e+02
+coil  348.4  14.45  2.1991927526e+02
+coil  349.2  14.45  2.1991927526e+02
+coil  350  14.45    2.1991927526e+02
+coil  346  15.25    2.1991927526e+02
+coil  346.8  15.25  2.1991927526e+02
+coil  347.6  15.25  2.1991927526e+02
+coil  348.4  15.25  2.1991927526e+02
+coil  349.2  15.25  2.1991927526e+02
+coil  350  15.25    2.1991927526e+02
+coil  346  16.05    2.1991927526e+02
+coil  346.8  16.05  2.1991927526e+02
+coil  347.6  16.05  2.1991927526e+02
+coil  348.4  16.05  2.1991927526e+02
+coil  349.2  16.05  2.1991927526e+02
+coil  350  16.05    2.1991927526e+02
+coil  346  16.85    2.1991927526e+02
+coil  346.8  16.85  2.1991927526e+02
+coil  347.6  16.85  2.1991927526e+02
+coil  348.4  16.85  2.1991927526e+02
+coil  349.2  16.85  2.1991927526e+02
+coil  350  16.85    2.1991927526e+02
+coil  346  17.65    2.1991927526e+02
+coil  346.8  17.65  2.1991927526e+02
+coil  347.6  17.65  2.1991927526e+02
+coil  348.4  17.65  2.1991927526e+02
+coil  349.2  17.65  2.1991927526e+02
+coil  350  17.65    2.1991927526e+02
+coil  346  18.45    2.1991927526e+02
+coil  346.8  18.45  2.1991927526e+02
+coil  347.6  18.45  2.1991927526e+02
+coil  348.4  18.45  2.1991927526e+02
+coil  349.2  18.45  2.1991927526e+02
+coil  350  18.45    2.1991927526e+02
+coil  346  19.25    2.1991927526e+02
+coil  346.8  19.25  2.1991927526e+02
+coil  347.6  19.25  2.1991927526e+02
+coil  348.4  19.25  2.1991927526e+02
+coil  349.2  19.25  2.1991927526e+02
+coil  350  19.25    2.1991927526e+02
+coil  346  20.05    2.1991927526e+02
+coil  346.8  20.05  2.1991927526e+02
+coil  347.6  20.05  2.1991927526e+02
+coil  348.4  20.05  2.1991927526e+02
+coil  349.2  20.05  2.1991927526e+02
+coil  350  20.05    2.1991927526e+02
+coil  346  20.85    2.1991927526e+02
+coil  346.8  20.85  2.1991927526e+02
+coil  347.6  20.85  2.1991927526e+02
+coil  348.4  20.85  2.1991927526e+02
+coil  349.2  20.85  2.1991927526e+02
+coil  350  20.85    2.1991927526e+02
+coil  346  21.65    2.1991927526e+02
+coil  346.8  21.65  2.1991927526e+02
+coil  347.6  21.65  2.1991927526e+02
+coil  348.4  21.65  2.1991927526e+02
+coil  349.2  21.65  2.1991927526e+02
+coil  350  21.65    2.1991927526e+02
+
+! solenoid 07, solenoid 66 turns behind SPB, current = 70 A
+!@subs 66 3 13
+coil  370  13.65    3.4571988915e+02
+coil  370.8  13.65  3.4571988915e+02
+coil  371.6  13.65  3.4571988915e+02
+coil  372.4  13.65  3.4571988915e+02
+coil  373.2  13.65  3.4571988915e+02
+coil  374  13.65    3.4571988915e+02
+coil  370  14.45    3.4571988915e+02
+coil  370.8  14.45  3.4571988915e+02
+coil  371.6  14.45  3.4571988915e+02
+coil  372.4  14.45  3.4571988915e+02
+coil  373.2  14.45  3.4571988915e+02
+coil  374  14.45    3.4571988915e+02
+coil  370  15.25    3.4571988915e+02
+coil  370.8  15.25  3.4571988915e+02
+coil  371.6  15.25  3.4571988915e+02
+coil  372.4  15.25  3.4571988915e+02
+coil  373.2  15.25  3.4571988915e+02
+coil  374  15.25    3.4571988915e+02
+coil  370  16.05    3.4571988915e+02
+coil  370.8  16.05  3.4571988915e+02
+coil  371.6  16.05  3.4571988915e+02
+coil  372.4  16.05  3.4571988915e+02
+coil  373.2  16.05  3.4571988915e+02
+coil  374  16.05    3.4571988915e+02
+coil  370  16.85    3.4571988915e+02
+coil  370.8  16.85  3.4571988915e+02
+coil  371.6  16.85  3.4571988915e+02
+coil  372.4  16.85  3.4571988915e+02
+coil  373.2  16.85  3.4571988915e+02
+coil  374  16.85    3.4571988915e+02
+coil  370  17.65    3.4571988915e+02
+coil  370.8  17.65  3.4571988915e+02
+coil  371.6  17.65  3.4571988915e+02
+coil  372.4  17.65  3.4571988915e+02
+coil  373.2  17.65  3.4571988915e+02
+coil  374  17.65    3.4571988915e+02
+coil  370  18.45    3.4571988915e+02
+coil  370.8  18.45  3.4571988915e+02
+coil  371.6  18.45  3.4571988915e+02
+coil  372.4  18.45  3.4571988915e+02
+coil  373.2  18.45  3.4571988915e+02
+coil  374  18.45    3.4571988915e+02
+coil  370  19.25    3.4571988915e+02
+coil  370.8  19.25  3.4571988915e+02
+coil  371.6  19.25  3.4571988915e+02
+coil  372.4  19.25  3.4571988915e+02
+coil  373.2  19.25  3.4571988915e+02
+coil  374  19.25    3.4571988915e+02
+coil  370  20.05    3.4571988915e+02
+coil  370.8  20.05  3.4571988915e+02
+coil  371.6  20.05  3.4571988915e+02
+coil  372.4  20.05  3.4571988915e+02
+coil  373.2  20.05  3.4571988915e+02
+coil  374  20.05    3.4571988915e+02
+coil  370  20.85    3.4571988915e+02
+coil  370.8  20.85  3.4571988915e+02
+coil  371.6  20.85  3.4571988915e+02
+coil  372.4  20.85  3.4571988915e+02
+coil  373.2  20.85  3.4571988915e+02
+coil  374  20.85    3.4571988915e+02
+coil  370  21.65    3.4571988915e+02
+coil  370.8  21.65  3.4571988915e+02
+coil  371.6  21.65  3.4571988915e+02
+coil  372.4  21.65  3.4571988915e+02
+coil  373.2  21.65  3.4571988915e+02
+coil  374  21.65    3.4571988915e+02
+                      
+
+
+! solenoid 08, solenoid 66 turns behind SPB, current = 70 A
+!@subs 66 3 14
+coil  394  13.65    3.9924157728e+02
+coil  394.8  13.65  3.9924157728e+02
+coil  395.6  13.65  3.9924157728e+02
+coil  396.4  13.65  3.9924157728e+02
+coil  397.2  13.65  3.9924157728e+02
+coil  398  13.65    3.9924157728e+02
+coil  394  14.45    3.9924157728e+02
+coil  394.8  14.45  3.9924157728e+02
+coil  395.6  14.45  3.9924157728e+02
+coil  396.4  14.45  3.9924157728e+02
+coil  397.2  14.45  3.9924157728e+02
+coil  398  14.45    3.9924157728e+02
+coil  394  15.25    3.9924157728e+02
+coil  394.8  15.25  3.9924157728e+02
+coil  395.6  15.25  3.9924157728e+02
+coil  396.4  15.25  3.9924157728e+02
+coil  397.2  15.25  3.9924157728e+02
+coil  398  15.25    3.9924157728e+02
+coil  394  16.05    3.9924157728e+02
+coil  394.8  16.05  3.9924157728e+02
+coil  395.6  16.05  3.9924157728e+02
+coil  396.4  16.05  3.9924157728e+02
+coil  397.2  16.05  3.9924157728e+02
+coil  398  16.05    3.9924157728e+02
+coil  394  16.85    3.9924157728e+02
+coil  394.8  16.85  3.9924157728e+02
+coil  395.6  16.85  3.9924157728e+02
+coil  396.4  16.85  3.9924157728e+02
+coil  397.2  16.85  3.9924157728e+02
+coil  398  16.85    3.9924157728e+02
+coil  394  17.65    3.9924157728e+02
+coil  394.8  17.65  3.9924157728e+02
+coil  395.6  17.65  3.9924157728e+02
+coil  396.4  17.65  3.9924157728e+02
+coil  397.2  17.65  3.9924157728e+02
+coil  398  17.65    3.9924157728e+02
+coil  394  18.45    3.9924157728e+02
+coil  394.8  18.45  3.9924157728e+02
+coil  395.6  18.45  3.9924157728e+02
+coil  396.4  18.45  3.9924157728e+02
+coil  397.2  18.45  3.9924157728e+02
+coil  398  18.45    3.9924157728e+02
+coil  394  19.25    3.9924157728e+02
+coil  394.8  19.25  3.9924157728e+02
+coil  395.6  19.25  3.9924157728e+02
+coil  396.4  19.25  3.9924157728e+02
+coil  397.2  19.25  3.9924157728e+02
+coil  398  19.25    3.9924157728e+02
+coil  394  20.05    3.9924157728e+02
+coil  394.8  20.05  3.9924157728e+02
+coil  395.6  20.05  3.9924157728e+02
+coil  396.4  20.05  3.9924157728e+02
+coil  397.2  20.05  3.9924157728e+02
+coil  398  20.05    3.9924157728e+02
+coil  394  20.85    3.9924157728e+02
+coil  394.8  20.85  3.9924157728e+02
+coil  395.6  20.85  3.9924157728e+02
+coil  396.4  20.85  3.9924157728e+02
+coil  397.2  20.85  3.9924157728e+02
+coil  398  20.85    3.9924157728e+02
+coil  394  21.65    3.9924157728e+02
+coil  394.8  21.65  3.9924157728e+02
+coil  395.6  21.65  3.9924157728e+02
+coil  396.4  21.65  3.9924157728e+02
+coil  397.2  21.65  3.9924157728e+02
+coil  398  21.65    3.9924157728e+02
+
+! solenoid 08, solenoid 66 turns behind SPB, current = 70 A
+!@subs 66 3 15
+coil  415  13.65    1.9189546884e+02
+coil  415.8  13.65  1.9189546884e+02
+coil  416.6  13.65  1.9189546884e+02
+coil  417.4  13.65  1.9189546884e+02
+coil  418.2  13.65  1.9189546884e+02
+coil  419  13.65    1.9189546884e+02
+coil  415  14.45    1.9189546884e+02
+coil  415.8  14.45  1.9189546884e+02
+coil  416.6  14.45  1.9189546884e+02
+coil  417.4  14.45  1.9189546884e+02
+coil  418.2  14.45  1.9189546884e+02
+coil  419  14.45    1.9189546884e+02
+coil  415  15.25    1.9189546884e+02
+coil  415.8  15.25  1.9189546884e+02
+coil  416.6  15.25  1.9189546884e+02
+coil  417.4  15.25  1.9189546884e+02
+coil  418.2  15.25  1.9189546884e+02
+coil  419  15.25    1.9189546884e+02
+coil  415  16.05    1.9189546884e+02
+coil  415.8  16.05  1.9189546884e+02
+coil  416.6  16.05  1.9189546884e+02
+coil  417.4  16.05  1.9189546884e+02
+coil  418.2  16.05  1.9189546884e+02
+coil  419  16.05    1.9189546884e+02
+coil  415  16.85    1.9189546884e+02
+coil  415.8  16.85  1.9189546884e+02
+coil  416.6  16.85  1.9189546884e+02
+coil  417.4  16.85  1.9189546884e+02
+coil  418.2  16.85  1.9189546884e+02
+coil  419  16.85    1.9189546884e+02
+coil  415  17.65    1.9189546884e+02
+coil  415.8  17.65  1.9189546884e+02
+coil  416.6  17.65  1.9189546884e+02
+coil  417.4  17.65  1.9189546884e+02
+coil  418.2  17.65  1.9189546884e+02
+coil  419  17.65    1.9189546884e+02
+coil  415  18.45    1.9189546884e+02
+coil  415.8  18.45  1.9189546884e+02
+coil  416.6  18.45  1.9189546884e+02
+coil  417.4  18.45  1.9189546884e+02
+coil  418.2  18.45  1.9189546884e+02
+coil  419  18.45    1.9189546884e+02
+coil  415  19.25    1.9189546884e+02
+coil  415.8  19.25  1.9189546884e+02
+coil  416.6  19.25  1.9189546884e+02
+coil  417.4  19.25  1.9189546884e+02
+coil  418.2  19.25  1.9189546884e+02
+coil  419  19.25    1.9189546884e+02
+coil  415  20.05    1.9189546884e+02
+coil  415.8  20.05  1.9189546884e+02
+coil  416.6  20.05  1.9189546884e+02
+coil  417.4  20.05  1.9189546884e+02
+coil  418.2  20.05  1.9189546884e+02
+coil  419  20.05    1.9189546884e+02
+coil  415  20.85    1.9189546884e+02
+coil  415.8  20.85  1.9189546884e+02
+coil  416.6  20.85  1.9189546884e+02
+coil  417.4  20.85  1.9189546884e+02
+coil  418.2  20.85  1.9189546884e+02
+coil  419  20.85    1.9189546884e+02
+coil  415  21.65    1.9189546884e+02
+coil  415.8  21.65  1.9189546884e+02
+coil  416.6  21.65  1.9189546884e+02
+coil  417.4  21.65  1.9189546884e+02
+coil  418.2  21.65  1.9189546884e+02
+coil  419  21.65    1.9189546884e+02
+
+! solenoid 08, solenoid 66 turns behind SPB, current = 70 A
+!@subs 66 3 16
+coil  430  13.65    3.7152805630e+02
+coil  430.8  13.65  3.7152805630e+02
+coil  431.6  13.65  3.7152805630e+02
+coil  432.4  13.65  3.7152805630e+02
+coil  433.2  13.65  3.7152805630e+02
+coil  434  13.65    3.7152805630e+02
+coil  430  14.45    3.7152805630e+02
+coil  430.8  14.45  3.7152805630e+02
+coil  431.6  14.45  3.7152805630e+02
+coil  432.4  14.45  3.7152805630e+02
+coil  433.2  14.45  3.7152805630e+02
+coil  434  14.45    3.7152805630e+02
+coil  430  15.25    3.7152805630e+02
+coil  430.8  15.25  3.7152805630e+02
+coil  431.6  15.25  3.7152805630e+02
+coil  432.4  15.25  3.7152805630e+02
+coil  433.2  15.25  3.7152805630e+02
+coil  434  15.25    3.7152805630e+02
+coil  430  16.05    3.7152805630e+02
+coil  430.8  16.05  3.7152805630e+02
+coil  431.6  16.05  3.7152805630e+02
+coil  432.4  16.05  3.7152805630e+02
+coil  433.2  16.05  3.7152805630e+02
+coil  434  16.05    3.7152805630e+02
+coil  430  16.85    3.7152805630e+02
+coil  430.8  16.85  3.7152805630e+02
+coil  431.6  16.85  3.7152805630e+02
+coil  432.4  16.85  3.7152805630e+02
+coil  433.2  16.85  3.7152805630e+02
+coil  434  16.85    3.7152805630e+02
+coil  430  17.65    3.7152805630e+02
+coil  430.8  17.65  3.7152805630e+02
+coil  431.6  17.65  3.7152805630e+02
+coil  432.4  17.65  3.7152805630e+02
+coil  433.2  17.65  3.7152805630e+02
+coil  434  17.65    3.7152805630e+02
+coil  430  18.45    3.7152805630e+02
+coil  430.8  18.45  3.7152805630e+02
+coil  431.6  18.45  3.7152805630e+02
+coil  432.4  18.45  3.7152805630e+02
+coil  433.2  18.45  3.7152805630e+02
+coil  434  18.45    3.7152805630e+02
+coil  430  19.25    3.7152805630e+02
+coil  430.8  19.25  3.7152805630e+02
+coil  431.6  19.25  3.7152805630e+02
+coil  432.4  19.25  3.7152805630e+02
+coil  433.2  19.25  3.7152805630e+02
+coil  434  19.25    3.7152805630e+02
+coil  430  20.05    3.7152805630e+02
+coil  430.8  20.05  3.7152805630e+02
+coil  431.6  20.05  3.7152805630e+02
+coil  432.4  20.05  3.7152805630e+02
+coil  433.2  20.05  3.7152805630e+02
+coil  434  20.05    3.7152805630e+02
+coil  430  20.85    3.7152805630e+02
+coil  430.8  20.85  3.7152805630e+02
+coil  431.6  20.85  3.7152805630e+02
+coil  432.4  20.85  3.7152805630e+02
+coil  433.2  20.85  3.7152805630e+02
+coil  434  20.85    3.7152805630e+02
+coil  430  21.65    3.7152805630e+02
+coil  430.8  21.65  3.7152805630e+02
+coil  431.6  21.65  3.7152805630e+02
+coil  432.4  21.65  3.7152805630e+02
+coil  433.2  21.65  3.7152805630e+02
+coil  434  21.65    3.7152805630e+02
+
+! solenoid 08, solenoid 66 turns behind SPB, current = 70 A
+!@subs 66 3 17
+coil  454  13.65    3.0408201273e+02
+coil  454.8  13.65  3.0408201273e+02
+coil  455.6  13.65  3.0408201273e+02
+coil  456.4  13.65  3.0408201273e+02
+coil  457.2  13.65  3.0408201273e+02
+coil  458  13.65    3.0408201273e+02
+coil  454  14.45    3.0408201273e+02
+coil  454.8  14.45  3.0408201273e+02
+coil  455.6  14.45  3.0408201273e+02
+coil  456.4  14.45  3.0408201273e+02
+coil  457.2  14.45  3.0408201273e+02
+coil  458  14.45    3.0408201273e+02
+coil  454  15.25    3.0408201273e+02
+coil  454.8  15.25  3.0408201273e+02
+coil  455.6  15.25  3.0408201273e+02
+coil  456.4  15.25  3.0408201273e+02
+coil  457.2  15.25  3.0408201273e+02
+coil  458  15.25    3.0408201273e+02
+coil  454  16.05    3.0408201273e+02
+coil  454.8  16.05  3.0408201273e+02
+coil  455.6  16.05  3.0408201273e+02
+coil  456.4  16.05  3.0408201273e+02
+coil  457.2  16.05  3.0408201273e+02
+coil  458  16.05    3.0408201273e+02
+coil  454  16.85    3.0408201273e+02
+coil  454.8  16.85  3.0408201273e+02
+coil  455.6  16.85  3.0408201273e+02
+coil  456.4  16.85  3.0408201273e+02
+coil  457.2  16.85  3.0408201273e+02
+coil  458  16.85    3.0408201273e+02
+coil  454  17.65    3.0408201273e+02
+coil  454.8  17.65  3.0408201273e+02
+coil  455.6  17.65  3.0408201273e+02
+coil  456.4  17.65  3.0408201273e+02
+coil  457.2  17.65  3.0408201273e+02
+coil  458  17.65    3.0408201273e+02
+coil  454  18.45    3.0408201273e+02
+coil  454.8  18.45  3.0408201273e+02
+coil  455.6  18.45  3.0408201273e+02
+coil  456.4  18.45  3.0408201273e+02
+coil  457.2  18.45  3.0408201273e+02
+coil  458  18.45    3.0408201273e+02
+coil  454  19.25    3.0408201273e+02
+coil  454.8  19.25  3.0408201273e+02
+coil  455.6  19.25  3.0408201273e+02
+coil  456.4  19.25  3.0408201273e+02
+coil  457.2  19.25  3.0408201273e+02
+coil  458  19.25    3.0408201273e+02
+coil  454  20.05    3.0408201273e+02
+coil  454.8  20.05  3.0408201273e+02
+coil  455.6  20.05  3.0408201273e+02
+coil  456.4  20.05  3.0408201273e+02
+coil  457.2  20.05  3.0408201273e+02
+coil  458  20.05    3.0408201273e+02
+coil  454  20.85    3.0408201273e+02
+coil  454.8  20.85  3.0408201273e+02
+coil  455.6  20.85  3.0408201273e+02
+coil  456.4  20.85  3.0408201273e+02
+coil  457.2  20.85  3.0408201273e+02
+coil  458  20.85    3.0408201273e+02
+coil  454  21.65    3.0408201273e+02
+coil  454.8  21.65  3.0408201273e+02
+coil  455.6  21.65  3.0408201273e+02
+coil  456.4  21.65  3.0408201273e+02
+coil  457.2  21.65  3.0408201273e+02
+coil  458  21.65    3.0408201273e+02
+
+! solenoid 08, solenoid 66 turns behind SPB, current = 70 A
+!@subs 66 3 18
+coil  478  13.65    7.0071272554e+01
+coil  478.8  13.65  7.0071272554e+01
+coil  479.6  13.65  7.0071272554e+01
+coil  480.4  13.65  7.0071272554e+01
+coil  481.2  13.65  7.0071272554e+01
+coil  482  13.65    7.0071272554e+01
+coil  478  14.45    7.0071272554e+01
+coil  478.8  14.45  7.0071272554e+01
+coil  479.6  14.45  7.0071272554e+01
+coil  480.4  14.45  7.0071272554e+01
+coil  481.2  14.45  7.0071272554e+01
+coil  482  14.45    7.0071272554e+01
+coil  478  15.25    7.0071272554e+01
+coil  478.8  15.25  7.0071272554e+01
+coil  479.6  15.25  7.0071272554e+01
+coil  480.4  15.25  7.0071272554e+01
+coil  481.2  15.25  7.0071272554e+01
+coil  482  15.25    7.0071272554e+01
+coil  478  16.05    7.0071272554e+01
+coil  478.8  16.05  7.0071272554e+01
+coil  479.6  16.05  7.0071272554e+01
+coil  480.4  16.05  7.0071272554e+01
+coil  481.2  16.05  7.0071272554e+01
+coil  482  16.05    7.0071272554e+01
+coil  478  16.85    7.0071272554e+01
+coil  478.8  16.85  7.0071272554e+01
+coil  479.6  16.85  7.0071272554e+01
+coil  480.4  16.85  7.0071272554e+01
+coil  481.2  16.85  7.0071272554e+01
+coil  482  16.85    7.0071272554e+01
+coil  478  17.65    7.0071272554e+01
+coil  478.8  17.65  7.0071272554e+01
+coil  479.6  17.65  7.0071272554e+01
+coil  480.4  17.65  7.0071272554e+01
+coil  481.2  17.65  7.0071272554e+01
+coil  482  17.65    7.0071272554e+01
+coil  478  18.45    7.0071272554e+01
+coil  478.8  18.45  7.0071272554e+01
+coil  479.6  18.45  7.0071272554e+01
+coil  480.4  18.45  7.0071272554e+01
+coil  481.2  18.45  7.0071272554e+01
+coil  482  18.45    7.0071272554e+01
+coil  478  19.25    7.0071272554e+01
+coil  478.8  19.25  7.0071272554e+01
+coil  479.6  19.25  7.0071272554e+01
+coil  480.4  19.25  7.0071272554e+01
+coil  481.2  19.25  7.0071272554e+01
+coil  482  19.25    7.0071272554e+01
+coil  478  20.05    7.0071272554e+01
+coil  478.8  20.05  7.0071272554e+01
+coil  479.6  20.05  7.0071272554e+01
+coil  480.4  20.05  7.0071272554e+01
+coil  481.2  20.05  7.0071272554e+01
+coil  482  20.05    7.0071272554e+01
+coil  478  20.85    7.0071272554e+01
+coil  478.8  20.85  7.0071272554e+01
+coil  479.6  20.85  7.0071272554e+01
+coil  480.4  20.85  7.0071272554e+01
+coil  481.2  20.85  7.0071272554e+01
+coil  482  20.85    7.0071272554e+01
+coil  478  21.65    7.0071272554e+01
+coil  478.8  21.65  7.0071272554e+01
+coil  479.6  21.65  7.0071272554e+01
+coil  480.4  21.65  7.0071272554e+01
+coil  481.2  21.65  7.0071272554e+01
+coil  482  21.65    7.0071272554e+01
+
+
+
+
+! solenoid 09, solenoid 66 turns behind SPB, current = 70 A
+!@subs 66 3 25
+coil  502  13.65    	2.0383392864e+02
+coil  502.8      13.65  2.0383392864e+02
+coil  503.6      13.65  2.0383392864e+02
+coil  504.4      13.65  2.0383392864e+02
+coil  505.2      13.65  2.0383392864e+02
+coil  506  13.65    	2.0383392864e+02
+coil  502  14.45    	2.0383392864e+02
+coil  502.8      14.45  2.0383392864e+02
+coil  503.6      14.45  2.0383392864e+02
+coil  504.4      14.45  2.0383392864e+02
+coil  505.2      14.45  2.0383392864e+02
+coil  506  14.45    	2.0383392864e+02
+coil  502  15.25    	2.0383392864e+02
+coil  502.8      15.25  2.0383392864e+02
+coil  503.6      15.25  2.0383392864e+02
+coil  504.4      15.25  2.0383392864e+02
+coil  505.2      15.25  2.0383392864e+02
+coil  506  15.25    	2.0383392864e+02
+coil  502  16.05    	2.0383392864e+02
+coil  502.8      16.05  2.0383392864e+02
+coil  503.6      16.05  2.0383392864e+02
+coil  504.4      16.05  2.0383392864e+02
+coil  505.2      16.05  2.0383392864e+02
+coil  506  16.05    	2.0383392864e+02
+coil  502  16.85    	2.0383392864e+02
+coil  502.8      16.85  2.0383392864e+02
+coil  503.6      16.85  2.0383392864e+02
+coil  504.4      16.85  2.0383392864e+02
+coil  505.2      16.85  2.0383392864e+02
+coil  506  16.85    	2.0383392864e+02
+coil  502  17.65    	2.0383392864e+02
+coil  502.8      17.65  2.0383392864e+02
+coil  503.6      17.65  2.0383392864e+02
+coil  504.4      17.65  2.0383392864e+02
+coil  505.2      17.65  2.0383392864e+02
+coil  506  17.65    	2.0383392864e+02
+coil  502  18.45    	2.0383392864e+02
+coil  502.8      18.45  2.0383392864e+02
+coil  503.6      18.45  2.0383392864e+02
+coil  504.4      18.45  2.0383392864e+02
+coil  505.2      18.45  2.0383392864e+02
+coil  506  18.45    	2.0383392864e+02
+coil  502  19.25    	2.0383392864e+02
+coil  502.8      19.25  2.0383392864e+02
+coil  503.6      19.25  2.0383392864e+02
+coil  504.4      19.25  2.0383392864e+02
+coil  505.2      19.25  2.0383392864e+02
+coil  506  19.25    	2.0383392864e+02
+coil  502  20.05    	2.0383392864e+02
+coil  502.8      20.05  2.0383392864e+02
+coil  503.6      20.05  2.0383392864e+02
+coil  504.4      20.05  2.0383392864e+02
+coil  505.2      20.05  2.0383392864e+02
+coil  506  20.05    	2.0383392864e+02
+coil  502  20.85    	2.0383392864e+02
+coil  502.8      20.85  2.0383392864e+02
+coil  503.6      20.85  2.0383392864e+02
+coil  504.4      20.85  2.0383392864e+02
+coil  505.2      20.85  2.0383392864e+02
+coil  506  20.85    	2.0383392864e+02
+coil  502  21.65    	2.0383392864e+02
+coil  502.8      21.65  2.0383392864e+02
+coil  503.6      21.65  2.0383392864e+02
+coil  504.4      21.65  2.0383392864e+02
+coil  505.2      21.65  2.0383392864e+02
+coil  506  21.65    	2.0383392864e+02
+
+
+
+
+! solenoid 09, solenoid 66 turns behind SPB, current = 70 A
+!@subs 66 3 26
+coil  526    13.65    		2.2501338272e+02
+coil  526.8          13.65  2.2501338272e+02
+coil  527.6          13.65  2.2501338272e+02
+coil  528.4          13.65  2.2501338272e+02
+coil  529.2          13.65  2.2501338272e+02
+coil  530    13.65    		2.2501338272e+02
+coil  526    14.45    		2.2501338272e+02
+coil  526.8          14.45  2.2501338272e+02
+coil  527.6          14.45  2.2501338272e+02
+coil  528.4          14.45  2.2501338272e+02
+coil  529.2          14.45  2.2501338272e+02
+coil  530    14.45    		2.2501338272e+02
+coil  526    15.25    		2.2501338272e+02
+coil  526.8          15.25  2.2501338272e+02
+coil  527.6          15.25  2.2501338272e+02
+coil  528.4          15.25  2.2501338272e+02
+coil  529.2          15.25  2.2501338272e+02
+coil  530    15.25    		2.2501338272e+02
+coil  526    16.05    		2.2501338272e+02
+coil  526.8          16.05  2.2501338272e+02
+coil  527.6          16.05  2.2501338272e+02
+coil  528.4          16.05  2.2501338272e+02
+coil  529.2          16.05  2.2501338272e+02
+coil  530    16.05    		2.2501338272e+02
+coil  526    16.85    		2.2501338272e+02
+coil  526.8          16.85  2.2501338272e+02
+coil  527.6          16.85  2.2501338272e+02
+coil  528.4          16.85  2.2501338272e+02
+coil  529.2          16.85  2.2501338272e+02
+coil  530    16.85    		2.2501338272e+02
+coil  526    17.65    		2.2501338272e+02
+coil  526.8          17.65  2.2501338272e+02
+coil  527.6          17.65  2.2501338272e+02
+coil  528.4          17.65  2.2501338272e+02
+coil  529.2          17.65  2.2501338272e+02
+coil  530    17.65    		2.2501338272e+02
+coil  526    18.45    		2.2501338272e+02
+coil  526.8          18.45  2.2501338272e+02
+coil  527.6          18.45  2.2501338272e+02
+coil  528.4          18.45  2.2501338272e+02
+coil  529.2          18.45  2.2501338272e+02
+coil  530    18.45    		2.2501338272e+02
+coil  526    19.25    		2.2501338272e+02
+coil  526.8          19.25  2.2501338272e+02
+coil  527.6          19.25  2.2501338272e+02
+coil  528.4          19.25  2.2501338272e+02
+coil  529.2          19.25  2.2501338272e+02
+coil  530    19.25    		2.2501338272e+02
+coil  526    20.05    		2.2501338272e+02
+coil  526.8          20.05  2.2501338272e+02
+coil  527.6          20.05  2.2501338272e+02
+coil  528.4          20.05  2.2501338272e+02
+coil  529.2          20.05  2.2501338272e+02
+coil  530    20.05    		2.2501338272e+02
+coil  526    20.85    		2.2501338272e+02
+coil  526.8          20.85  2.2501338272e+02
+coil  527.6          20.85  2.2501338272e+02
+coil  528.4          20.85  2.2501338272e+02
+coil  529.2          20.85  2.2501338272e+02
+coil  530    20.85    		2.2501338272e+02
+coil  526    21.65    		2.2501338272e+02
+coil  526.8          21.65  2.2501338272e+02
+coil  527.6          21.65  2.2501338272e+02
+coil  528.4          21.65  2.2501338272e+02
+coil  529.2          21.65  2.2501338272e+02
+coil  530    21.65    		2.2501338272e+02
+
+
+! solenoid 09, solenoid 66 turns behind SPB, current = 70 A
+!@subs 66 3 27
+coil  550  13.65    	2.7283996360e+02
+coil  550.8      13.65  2.7283996360e+02
+coil  551.6      13.65  2.7283996360e+02
+coil  552.4      13.65  2.7283996360e+02
+coil  553.2      13.65  2.7283996360e+02
+coil  554  13.65    	2.7283996360e+02
+coil  550  14.45    	2.7283996360e+02
+coil  550.8      14.45  2.7283996360e+02
+coil  551.6      14.45  2.7283996360e+02
+coil  552.4      14.45  2.7283996360e+02
+coil  553.2      14.45  2.7283996360e+02
+coil  554  14.45    	2.7283996360e+02
+coil  550  15.25    	2.7283996360e+02
+coil  550.8      15.25  2.7283996360e+02
+coil  551.6      15.25  2.7283996360e+02
+coil  552.4      15.25  2.7283996360e+02
+coil  553.2      15.25  2.7283996360e+02
+coil  554  15.25    	2.7283996360e+02
+coil  550  16.05    	2.7283996360e+02
+coil  550.8      16.05  2.7283996360e+02
+coil  551.6      16.05  2.7283996360e+02
+coil  552.4      16.05  2.7283996360e+02
+coil  553.2      16.05  2.7283996360e+02
+coil  554  16.05    	2.7283996360e+02
+coil  550  16.85    	2.7283996360e+02
+coil  550.8      16.85  2.7283996360e+02
+coil  551.6      16.85  2.7283996360e+02
+coil  552.4      16.85  2.7283996360e+02
+coil  553.2      16.85  2.7283996360e+02
+coil  554  16.85    	2.7283996360e+02
+coil  550  17.65    	2.7283996360e+02
+coil  550.8      17.65  2.7283996360e+02
+coil  551.6      17.65  2.7283996360e+02
+coil  552.4      17.65  2.7283996360e+02
+coil  553.2      17.65  2.7283996360e+02
+coil  554  17.65    	2.7283996360e+02
+coil  550  18.45    	2.7283996360e+02
+coil  550.8      18.45  2.7283996360e+02
+coil  551.6      18.45  2.7283996360e+02
+coil  552.4      18.45  2.7283996360e+02
+coil  553.2      18.45  2.7283996360e+02
+coil  554  18.45    	2.7283996360e+02
+coil  550  19.25    	2.7283996360e+02
+coil  550.8      19.25  2.7283996360e+02
+coil  551.6      19.25  2.7283996360e+02
+coil  552.4      19.25  2.7283996360e+02
+coil  553.2      19.25  2.7283996360e+02
+coil  554  19.25    	2.7283996360e+02
+coil  550  20.05    	2.7283996360e+02
+coil  550.8      20.05  2.7283996360e+02
+coil  551.6      20.05  2.7283996360e+02
+coil  552.4      20.05  2.7283996360e+02
+coil  553.2      20.05  2.7283996360e+02
+coil  554  20.05    	2.7283996360e+02
+coil  550  20.85    	2.7283996360e+02
+coil  550.8      20.85  2.7283996360e+02
+coil  551.6      20.85  2.7283996360e+02
+coil  552.4      20.85  2.7283996360e+02
+coil  553.2      20.85  2.7283996360e+02
+coil  554  20.85    	2.7283996360e+02
+coil  550  21.65    	2.7283996360e+02
+coil  550.8      21.65  2.7283996360e+02
+coil  551.6      21.65  2.7283996360e+02
+coil  552.4      21.65  2.7283996360e+02
+coil  553.2      21.65  2.7283996360e+02
+coil  554  21.65    	2.7283996360e+02
+
+
+
+
+! solenoid 09, solenoid 66 turns behind SPB, current = 70 A
+!@subs 66 3 28
+coil  574  13.65    	2.0688951707e+02
+coil  574.8      13.65  2.0688951707e+02
+coil  575.6      13.65  2.0688951707e+02
+coil  576.4      13.65  2.0688951707e+02
+coil  577.2      13.65  2.0688951707e+02
+coil  578  13.65    	2.0688951707e+02
+coil  574  14.45    	2.0688951707e+02
+coil  574.8      14.45  2.0688951707e+02
+coil  575.6      14.45  2.0688951707e+02
+coil  576.4      14.45  2.0688951707e+02
+coil  577.2      14.45  2.0688951707e+02
+coil  578  14.45    	2.0688951707e+02
+coil  574  15.25    	2.0688951707e+02
+coil  574.8      15.25  2.0688951707e+02
+coil  575.6      15.25  2.0688951707e+02
+coil  576.4      15.25  2.0688951707e+02
+coil  577.2      15.25  2.0688951707e+02
+coil  578  15.25    	2.0688951707e+02
+coil  574  16.05    	2.0688951707e+02
+coil  574.8      16.05  2.0688951707e+02
+coil  575.6      16.05  2.0688951707e+02
+coil  576.4      16.05  2.0688951707e+02
+coil  577.2      16.05  2.0688951707e+02
+coil  578  16.05    	2.0688951707e+02
+coil  574  16.85    	2.0688951707e+02
+coil  574.8      16.85  2.0688951707e+02
+coil  575.6      16.85  2.0688951707e+02
+coil  576.4      16.85  2.0688951707e+02
+coil  577.2      16.85  2.0688951707e+02
+coil  578  16.85    	2.0688951707e+02
+coil  574  17.65    	2.0688951707e+02
+coil  574.8      17.65  2.0688951707e+02
+coil  575.6      17.65  2.0688951707e+02
+coil  576.4      17.65  2.0688951707e+02
+coil  577.2      17.65  2.0688951707e+02
+coil  578  17.65    	2.0688951707e+02
+coil  574  18.45    	2.0688951707e+02
+coil  574.8      18.45  2.0688951707e+02
+coil  575.6      18.45  2.0688951707e+02
+coil  576.4      18.45  2.0688951707e+02
+coil  577.2      18.45  2.0688951707e+02
+coil  578  18.45    	2.0688951707e+02
+coil  574  19.25    	2.0688951707e+02
+coil  574.8      19.25  2.0688951707e+02
+coil  575.6      19.25  2.0688951707e+02
+coil  576.4      19.25  2.0688951707e+02
+coil  577.2      19.25  2.0688951707e+02
+coil  578  19.25    	2.0688951707e+02
+coil  574  20.05    	2.0688951707e+02
+coil  574.8      20.05  2.0688951707e+02
+coil  575.6      20.05  2.0688951707e+02
+coil  576.4      20.05  2.0688951707e+02
+coil  577.2      20.05  2.0688951707e+02
+coil  578  20.05    	2.0688951707e+02
+coil  574  20.85    	2.0688951707e+02
+coil  574.8      20.85  2.0688951707e+02
+coil  575.6      20.85  2.0688951707e+02
+coil  576.4      20.85  2.0688951707e+02
+coil  577.2      20.85  2.0688951707e+02
+coil  578  20.85    	2.0688951707e+02
+coil  574  21.65    	2.0688951707e+02
+coil  574.8      21.65  2.0688951707e+02
+coil  575.6      21.65  2.0688951707e+02
+coil  576.4      21.65  2.0688951707e+02
+coil  577.2      21.65  2.0688951707e+02
+coil  578  21.65    	2.0688951707e+02
+
+
+! solenoid 09, solenoid 66 turns behind SPB, current = 70 A
+!@subs 66 3 29
+coil  598      13.65    	  2.2231353489e+02
+coil  598.8            13.65  2.2231353489e+02
+coil  599.6            13.65  2.2231353489e+02
+coil  600.4            13.65  2.2231353489e+02
+coil  601.2            13.65  2.2231353489e+02
+coil  602      13.65    	  2.2231353489e+02
+coil  598      14.45    	  2.2231353489e+02
+coil  598.8            14.45  2.2231353489e+02
+coil  599.6            14.45  2.2231353489e+02
+coil  600.4            14.45  2.2231353489e+02
+coil  601.2            14.45  2.2231353489e+02
+coil  602      14.45    	  2.2231353489e+02
+coil  598      15.25    	  2.2231353489e+02
+coil  598.8            15.25  2.2231353489e+02
+coil  599.6            15.25  2.2231353489e+02
+coil  600.4            15.25  2.2231353489e+02
+coil  601.2            15.25  2.2231353489e+02
+coil  602      15.25    	  2.2231353489e+02
+coil  598      16.05    	  2.2231353489e+02
+coil  598.8            16.05  2.2231353489e+02
+coil  599.6            16.05  2.2231353489e+02
+coil  600.4            16.05  2.2231353489e+02
+coil  601.2            16.05  2.2231353489e+02
+coil  602      16.05    	  2.2231353489e+02
+coil  598      16.85    	  2.2231353489e+02
+coil  598.8            16.85  2.2231353489e+02
+coil  599.6            16.85  2.2231353489e+02
+coil  600.4            16.85  2.2231353489e+02
+coil  601.2            16.85  2.2231353489e+02
+coil  602      16.85    	  2.2231353489e+02
+coil  598      17.65    	  2.2231353489e+02
+coil  598.8            17.65  2.2231353489e+02
+coil  599.6            17.65  2.2231353489e+02
+coil  600.4            17.65  2.2231353489e+02
+coil  601.2            17.65  2.2231353489e+02
+coil  602      17.65    	  2.2231353489e+02
+coil  598      18.45    	  2.2231353489e+02
+coil  598.8            18.45  2.2231353489e+02
+coil  599.6            18.45  2.2231353489e+02
+coil  600.4            18.45  2.2231353489e+02
+coil  601.2            18.45  2.2231353489e+02
+coil  602      18.45    	  2.2231353489e+02
+coil  598      19.25    	  2.2231353489e+02
+coil  598.8            19.25  2.2231353489e+02
+coil  599.6            19.25  2.2231353489e+02
+coil  600.4            19.25  2.2231353489e+02
+coil  601.2            19.25  2.2231353489e+02
+coil  602      19.25    	  2.2231353489e+02
+coil  598      20.05    	  2.2231353489e+02
+coil  598.8            20.05  2.2231353489e+02
+coil  599.6            20.05  2.2231353489e+02
+coil  600.4            20.05  2.2231353489e+02
+coil  601.2            20.05  2.2231353489e+02
+coil  602      20.05    	  2.2231353489e+02
+coil  598      20.85    	  2.2231353489e+02
+coil  598.8            20.85  2.2231353489e+02
+coil  599.6            20.85  2.2231353489e+02
+coil  600.4            20.85  2.2231353489e+02
+coil  601.2            20.85  2.2231353489e+02
+coil  602      20.85    	  2.2231353489e+02
+coil  598      21.65    	  2.2231353489e+02
+coil  598.8            21.65  2.2231353489e+02
+coil  599.6            21.65  2.2231353489e+02
+coil  600.4            21.65  2.2231353489e+02
+coil  601.2            21.65  2.2231353489e+02
+coil  602      21.65    	  2.2231353489e+02
+
+
+! solenoid 09, solenoid 66 turns behind SPB, current = 70 A
+!@subs 66 3 30
+coil  622    13.65    		  2.2441168021e+02
+coil  622.8            13.65  2.2441168021e+02
+coil  623.6            13.65  2.2441168021e+02
+coil  624.4            13.65  2.2441168021e+02
+coil  625.2            13.65  2.2441168021e+02
+coil  626    13.65    		  2.2441168021e+02
+coil  622    14.45    		  2.2441168021e+02
+coil  622.8            14.45  2.2441168021e+02
+coil  623.6            14.45  2.2441168021e+02
+coil  624.4            14.45  2.2441168021e+02
+coil  625.2            14.45  2.2441168021e+02
+coil  626    14.45    		  2.2441168021e+02
+coil  622    15.25    		  2.2441168021e+02
+coil  622.8            15.25  2.2441168021e+02
+coil  623.6            15.25  2.2441168021e+02
+coil  624.4            15.25  2.2441168021e+02
+coil  625.2            15.25  2.2441168021e+02
+coil  626    15.25    		  2.2441168021e+02
+coil  622    16.05    		  2.2441168021e+02
+coil  622.8            16.05  2.2441168021e+02
+coil  623.6            16.05  2.2441168021e+02
+coil  624.4            16.05  2.2441168021e+02
+coil  625.2            16.05  2.2441168021e+02
+coil  626    16.05    		  2.2441168021e+02
+coil  622    16.85    		  2.2441168021e+02
+coil  622.8            16.85  2.2441168021e+02
+coil  623.6            16.85  2.2441168021e+02
+coil  624.4            16.85  2.2441168021e+02
+coil  625.2            16.85  2.2441168021e+02
+coil  626    16.85    		  2.2441168021e+02
+coil  622    17.65    		  2.2441168021e+02
+coil  622.8            17.65  2.2441168021e+02
+coil  623.6            17.65  2.2441168021e+02
+coil  624.4            17.65  2.2441168021e+02
+coil  625.2            17.65  2.2441168021e+02
+coil  626    17.65    		  2.2441168021e+02
+coil  622    18.45    		  2.2441168021e+02
+coil  622.8            18.45  2.2441168021e+02
+coil  623.6            18.45  2.2441168021e+02
+coil  624.4            18.45  2.2441168021e+02
+coil  625.2            18.45  2.2441168021e+02
+coil  626    18.45    		  2.2441168021e+02
+coil  622    19.25    		  2.2441168021e+02
+coil  622.8            19.25  2.2441168021e+02
+coil  623.6            19.25  2.2441168021e+02
+coil  624.4            19.25  2.2441168021e+02
+coil  625.2            19.25  2.2441168021e+02
+coil  626    19.25    		  2.2441168021e+02
+coil  622    20.05    		  2.2441168021e+02
+coil  622.8            20.05  2.2441168021e+02
+coil  623.6            20.05  2.2441168021e+02
+coil  624.4            20.05  2.2441168021e+02
+coil  625.2            20.05  2.2441168021e+02
+coil  626    20.05    		  2.2441168021e+02
+coil  622    20.85    		  2.2441168021e+02
+coil  622.8            20.85  2.2441168021e+02
+coil  623.6            20.85  2.2441168021e+02
+coil  624.4            20.85  2.2441168021e+02
+coil  625.2            20.85  2.2441168021e+02
+coil  626    20.85    		  2.2441168021e+02
+coil  622    21.65    		  2.2441168021e+02
+coil  622.8            21.65  2.2441168021e+02
+coil  623.6            21.65  2.2441168021e+02
+coil  624.4            21.65  2.2441168021e+02
+coil  625.2            21.65  2.2441168021e+02
+coil  626    21.65    		  2.2441168021e+02
+
+
+
+
+
+
+
+
+
+
+!ZOUT  NPrint  D_PHI  Z1  Z2  X1  Y1  X2  Y2
+ZOUT  5000  30  0  3000  0 0 0  0
+
+ZLIMIT  100
+!CHARGE  -1  1
+
+!@subs 1 4 4 6 5
+INPUT  9  19999  0.5  8.1543284195e-01 350  7.0217015115e+02 ! r=3mm, 1ns with 3 sigma_lC 701.55=1.3ns
+
+! OUTPUT  type  1=text  /  5=pargraf
+
+OUTPUT  5
+
+!SCHEFF  I_T[A]  Delta_R_SC  Delta_Z_SC  N_R  N_Z  N_bunch  L_bunch  RingOption  MeshFactor  R_wall  b             for 13nc=38.975A; 10nc=29.98
+SCHEFF  30  4  40  25  250  0  0  5  1.5  0  0           !3 nC 
+
+!START  Phi_0  Delta_Phi  NumberOfSteps  SpaceChargeSteps  OutputSteps
+
+
+
+START  0  5  3590  1  50 !before 3GHz buncher; 17950
+save 0
+restart 5 4650 1 50 0 0 !after 1st linac 41200
+save 1
+!restart 5 6260 1 50 0 1 ! 
+!save 2
+!restart 5 4900 1 50 0 2 ! 
+!save 3
+!restart 5 4900 1 50 0 3 ! 
+!save 4
+!restart 5 4900 1 50 0 4 ! 
+!save 5
+!restart 5 4800 1 50 0 5 ! 
+!save 6
+!restart 5 4900 1 50 0 6 ! 
+!save 7
+!restart 5 50000 1 50 0 7 ! 
+
+
+
+END
+
+
+
+
+
